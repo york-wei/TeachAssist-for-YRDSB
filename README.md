@@ -9,7 +9,7 @@ If you find a bug, please use our [Google Forms](https://docs.google.com/forms/d
 This app is not associated with the TeachAssist Foundation or YRDSB. For student use only.
 
 # Download
-Avaliable for download on the [iOS App Store](https://apps.apple.com/ca/app/teachassist-for-yrdsb/id1479482556).
+Available for download on the [iOS App Store](https://apps.apple.com/ca/app/teachassist-for-yrdsb/id1479482556).
 
 <p align="left">
     <img src="https://user-images.githubusercontent.com/49313072/90061637-67af7f00-dcb4-11ea-8d64-9c62eae3f195.jpg" width="184px" height="400px">
