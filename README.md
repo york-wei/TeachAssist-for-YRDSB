@@ -6,8 +6,6 @@ The TeachAssist platform is transformed into an app with clean, user-friendly UI
 
 If you find a bug, please use our [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSe1rl77TVf8BO1nt-CNlovleFo6wDpiYY-YQclaAxcQWI0AEw/viewform) or email us at teachassist.ios@gmail.com.
 
-This app is not associated with the TeachAssist Foundation or YRDSB. For student use only.
-
 This app was previously written in UIKit for devices using iOS 12 and under. See the repository [here](https://github.com/york-wei/TeachAssist-for-YRDSB-OLD).
 
 # Download
