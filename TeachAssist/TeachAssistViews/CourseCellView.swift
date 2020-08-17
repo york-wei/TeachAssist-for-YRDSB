@@ -13,6 +13,7 @@ struct CourseCellView: View {
     @Binding var opened : Bool
     @Binding var index: Int
     @State var course : Course
+    @State var redacted : Bool
     @EnvironmentObject var userDataVM: UserDataViewModel
     
     var body: some View {
@@ -59,9 +60,23 @@ struct CourseCellView: View {
                 }
                 
                 if self.course.parsedAverage >= 0 {
-                    ProgressBarView(percentage: self.course.parsedAverage)
-                        .offset(x: 0, y: 6)
-                        .frame(height: 6)
+                    if #available(iOS 14.0, *) {
+                        if self.redacted {
+                            ProgressBarView(percentage: 0)
+                                .offset(x: 0, y: 6)
+                                .frame(height: 6)
+                        }
+                        else {
+                            ProgressBarView(percentage: self.course.parsedAverage)
+                                .offset(x: 0, y: 6)
+                                .frame(height: 6)
+                        }
+                    }
+                    else {
+                        ProgressBarView(percentage: self.course.parsedAverage)
+                            .offset(x: 0, y: 6)
+                            .frame(height: 6)
+                    }
                 }
                 else {
                     Text("Mark Unavailable")

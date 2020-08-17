@@ -113,7 +113,7 @@ struct CourseView: View {
                     HStack {
                         Spacer()
                     }
-                    RingView(percentage: !editing ? self.userDataVM.courses[courseIndex].parsedAverage : self.userDataVM.editCourse.parsedAverage)
+                    RingView(percentage: !editing ? self.userDataVM.courses[courseIndex].parsedAverage : self.userDataVM.editCourse.parsedAverage, redacted: false)
                     .padding(.top, 20)
                     .padding(.bottom, 15)
                     Text(!editing ? "Course Average" : "Predicted Course Average")

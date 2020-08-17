@@ -106,9 +106,23 @@ struct TeachAssistView: View {
                             
                             //SHOW OVERALL AVERAGE RING THERE ARE MARKS AVAILABLE
                             if self.userDataVM.overallAverage >= 0 {
-                                RingView(percentage: self.userDataVM.overallAverage)
-                                    .padding(.top, 20)
-                                    .padding(.bottom, 15)
+                                if #available(iOS 14.0, *) {
+                                    if self.userDataVM.isLoading {
+                                        RingView(percentage: self.userDataVM.overallAverage, redacted: true)
+                                            .padding(.top, 20)
+                                            .padding(.bottom, 15)
+                                            .redacted(reason: .placeholder)
+                                    }
+                                    else {
+                                        RingView(percentage: self.userDataVM.overallAverage, redacted: false)
+                                            .padding(.top, 20)
+                                            .padding(.bottom, 15)
+                                    }
+                                } else {
+                                    RingView(percentage: self.userDataVM.overallAverage, redacted: false)
+                                        .padding(.top, 20)
+                                        .padding(.bottom, 15)
+                                }
                                 Text("Term Average")
                                     .font(.system(size: get(type: "small"), weight: .regular))
                                     .foregroundColor(Color("SecondaryTextColor"))
@@ -122,12 +136,33 @@ struct TeachAssistView: View {
                         .padding(.bottom, 30)
                         
 
-                        VStack (spacing: 20) {
-                            ForEach(self.userDataVM.courses) { course in
-                                CourseCellView(opened: self.$opened, index: self.$index, course: course).environmentObject(self.userDataVM)
+                        if #available(iOS 14.0, *) {
+                            if self.userDataVM.isLoading {
+                                VStack (spacing: 20) {
+                                    ForEach(self.userDataVM.courses) { course in
+                                        CourseCellView(opened: self.$opened, index: self.$index, course: course, redacted: self.userDataVM.isLoading).environmentObject(self.userDataVM)
+                                    }
+                                }
+                                .padding(.bottom, 75)
+                                .redacted(reason: .placeholder)
+                                .disabled(true)
                             }
+                            else {
+                                VStack (spacing: 20) {
+                                    ForEach(self.userDataVM.courses) { course in
+                                        CourseCellView(opened: self.$opened, index: self.$index, course: course, redacted: self.userDataVM.isLoading).environmentObject(self.userDataVM)
+                                    }
+                                }
+                                .padding(.bottom, 75)
+                            }
+                        } else {
+                            VStack (spacing: 20) {
+                                ForEach(self.userDataVM.courses) { course in
+                                    CourseCellView(opened: self.$opened, index: self.$index, course: course, redacted: self.userDataVM.isLoading).environmentObject(self.userDataVM)
+                                }
+                            }
+                            .padding(.bottom, 75)
                         }
-                        .padding(.bottom, 75)
                         
                     }
                     
