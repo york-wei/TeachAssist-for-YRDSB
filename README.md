@@ -1,6 +1,6 @@
 # TeachAssist for YRDSB
 
-The unofficial TeachAssist iOS app made by students, for students.
+The unofficial TeachAssist iOS app written in Swift using the SwiftUI framework.
 
 The TeachAssist platform is transformed into an app with clean, user-friendly UI and numerous additional tools to help students succeed.
 
