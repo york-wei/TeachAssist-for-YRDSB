@@ -8,6 +8,8 @@ If you find a bug, please use our [Google Forms](https://docs.google.com/forms/d
 
 This app is not associated with the TeachAssist Foundation or YRDSB. For student use only.
 
+This app was also written in UIKit for devices using iOS 12 and under. See the repository [here](https://github.com/york-wei/TeachAssist-for-YRDSB-OLD).
+
 # Download
 Available for download on the [iOS App Store](https://apps.apple.com/ca/app/teachassist-for-yrdsb/id1479482556).
 
