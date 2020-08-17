@@ -11,7 +11,7 @@ This app is not associated with the TeachAssist Foundation or YRDSB. For student
 This app was previously written in UIKit for devices using iOS 12 and under. See the repository [here](https://github.com/york-wei/TeachAssist-for-YRDSB-OLD).
 
 # Download
-Available for download on the [iOS App Store](https://apps.apple.com/ca/app/teachassist-for-yrdsb/id1479482556).
+Available for download on the [iOS App Store](https://apps.apple.com/ca/app/teachassist-for-yrdsb/id1479482556). As of 2020, this app has been downloaded by over 10,000 York Region students and peaked at rank 7 on the Education top charts on the AppStore.
 
 <p align="left">
     <img src="https://user-images.githubusercontent.com/49313072/90061637-67af7f00-dcb4-11ea-8d64-9c62eae3f195.jpg" width="184px" height="400px">
