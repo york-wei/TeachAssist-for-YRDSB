@@ -172,9 +172,24 @@ struct TeachAssistView: View {
                 if self.userDataVM.courses.count == 0 {
                     VStack {
                         Spacer()
-                        Text("No Courses Available")
-                            .font(.system(size: get(type: "small"), weight: .semibold))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                        if #available(iOS 14.0, *) {
+                            if self.userDataVM.isLoading {
+                                Text("No Courses Available")
+                                    .font(.system(size: get(type: "small"), weight: .semibold))
+                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .redacted(reason: .placeholder)
+                            }
+                            else {
+                                Text("No Courses Available")
+                                    .font(.system(size: get(type: "small"), weight: .semibold))
+                                    .foregroundColor(Color("SecondaryTextColor"))
+                            }
+                        }
+                        else {
+                            Text("No Courses Available")
+                                .font(.system(size: get(type: "small"), weight: .semibold))
+                                .foregroundColor(Color("SecondaryTextColor"))
+                        }
                         Spacer()
                     }
                 }
@@ -567,12 +582,3 @@ struct ActivityIndicator: UIViewRepresentable {
         isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
     }
 }
-
-//88                    88
-//88                    88
-//88                    88
-//88 ,adPPYba,  ,adPPYb,88
-//88 I8[    "" a8"    `Y88
-//88  `"Y8ba,  8b       88
-//88 aa    ]8I "8a,   ,d88
-//88 `"YbbdP"'  `"8bbdP"Y8
