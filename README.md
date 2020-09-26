@@ -6,7 +6,7 @@ The TeachAssist platform is transformed into an app with clean, user-friendly UI
 
 If you find a bug, please use our [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSe1rl77TVf8BO1nt-CNlovleFo6wDpiYY-YQclaAxcQWI0AEw/viewform) or email us at teachassist.ios@gmail.com.
 
-This app was previously written in UIKit for devices using iOS 12 and under. See the repository [here](https://github.com/york-wei/TeachAssist-for-YRDSB-OLD).
+This app was previously written in using the UIKit framework for devices on iOS 12 and under. See the repository [here](https://github.com/york-wei/TeachAssist-for-YRDSB-OLD).
 
 # Download
 Available for download on the [iOS App Store](https://apps.apple.com/ca/app/teachassist-for-yrdsb/id1479482556). As of 2020, this app has been downloaded by over 10,000 York Region students and peaked at rank 7 on the Education top charts on the AppStore.
