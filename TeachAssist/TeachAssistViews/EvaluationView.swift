@@ -14,7 +14,7 @@ struct EvaluationView: View {
     
     var editing : Bool
     var evaluation : Evaluation
-
+    
     @State var edit = false
     
     @State var expanded = false
@@ -46,7 +46,7 @@ struct EvaluationView: View {
                                 .padding(.trailing, 5)
                                 .background(Color("HighlightColor"))
                                 .cornerRadius(5)
-
+                                
                                 
                                 .foregroundColor(Color("PrimaryTextColor"))
                         }
@@ -67,7 +67,7 @@ struct EvaluationView: View {
                             self.edit = true
                         }) {
                             Image(systemName: "slider.horizontal.3")
-                            .font(.system(size: 16, weight: .semibold))
+                                .font(.system(size: 16, weight: .semibold))
                                 .foregroundColor(Color("IconColor"))
                         }
                         .padding(5)
@@ -232,15 +232,31 @@ struct EvaluationView: View {
         }
         .foregroundColor(Color("CellColor"))
         //.frame(height: (!expanded || editing) ? get(type: "cell") : 380)
-            .animation(animate && expanded ? .easeOut(duration: 0.3) : .none)
+        .animation(animate && expanded ? .easeOut(duration: 0.3) : .none)
         .onTapGesture {
             if(!self.editing) {
                 self.expanded.toggle()
                 self.animate = true
             }
         }
-        .sheet(isPresented: self.$edit) {
-            EditEvaluationView(edit: self.$edit, evaluation: self.evaluation).environmentObject(self.userDataVM)
+        
+        if #available(iOS 14.0, *) {
+            VStack {
+            }
+            .fullScreenCover(isPresented: self.$edit){
+                EditEvaluationView(edit: self.$edit, evaluation: self.evaluation).environmentObject(self.userDataVM)
+                
+                //        .sheet(isPresented: self.$edit) {
+                //            EditEvaluationView(edit: self.$edit, evaluation: self.evaluation).environmentObject(self.userDataVM)
+                //        }
+            }
+        } else {
+            VStack {
+            }
+            
+            .sheet(isPresented: self.$edit) {
+                EditEvaluationView(edit: self.$edit, evaluation: self.evaluation).environmentObject(self.userDataVM)
+            }
         }
     }
 }

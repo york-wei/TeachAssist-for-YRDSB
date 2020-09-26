@@ -12,6 +12,13 @@ import FirebaseAnalytics
 
 struct TeachAssistView: View {
     
+    @State private var item: Item?
+
+        struct Item: Identifiable {
+            let id = UUID()
+            var label: String = ""
+        }
+    
     @EnvironmentObject var userDataVM: UserDataViewModel
     
     @State var showAlert = false
@@ -44,6 +51,14 @@ struct TeachAssistView: View {
             if self.opened {
                 CourseView(opened: self.$opened, courseIndex: self.index).environmentObject(self.userDataVM)
                     .transition(.move(edge: .trailing))
+            }
+            else if self.showSheet {
+                if self.type == "web" {
+                    WebsiteView(url: self.url, show: self.$showSheet).environmentObject(self.userDataVM)
+                }
+                else if self.type == "bugreport" {
+                    BugReportView(showBugReport: self.$showSheet).environmentObject(self.userDataVM)
+                }
             }
             else {
                 ScrollView(showsIndicators: false) {
@@ -278,8 +293,10 @@ struct TeachAssistView: View {
                                     .onTapGesture {
                                         if self.userDataVM.studentID != "demo" {
                                             self.url = "https://ta.yrdsb.ca/live/m/index.php?error_message=0"
-                                            self.showSheet = true
                                             self.type = "web"
+                                            withAnimation {
+                                                self.showSheet = true
+                                            }
                                         }
                                         else {
                                             if let url = URL(string: "https://ta.yrdsb.ca/live/m/index.php?error_message=0") {
@@ -308,8 +325,11 @@ struct TeachAssistView: View {
                                     .onTapGesture {
                                         if self.userDataVM.studentID != "demo" {
                                             self.url = "https://mypathwayplanner.yrdsb.ca/"
-                                            self.showSheet = true
                                             self.type = "web"
+                                            withAnimation {
+                                                self.showSheet = true
+                                            }
+                            
                                         }
                                         else {
                                             if let url = URL(string: "https://mypathwayplanner.yrdsb.ca/") {
@@ -339,8 +359,10 @@ struct TeachAssistView: View {
                                     .onTapGesture {
                                         if self.userDataVM.studentID != "demo" {
                                             self.url = "https://moodle2.yrdsb.ca/login/index.php"
-                                            self.showSheet = true
                                             self.type = "web"
+                                            withAnimation {
+                                                self.showSheet = true
+                                            }
                                         }
                                         else {
                                             if let url = URL(string: "https://moodle2.yrdsb.ca/login/index.php") {
@@ -369,8 +391,10 @@ struct TeachAssistView: View {
                                     .onTapGesture {
                                         if self.userDataVM.studentID != "demo" {
                                             self.url = "https://twitter.com/yrdsb"
-                                            self.showSheet = true
                                             self.type = "web"
+                                            withAnimation {
+                                                self.showSheet = true
+                                            }
                                         }
                                         else {
                                             if let url = URL(string: "https://twitter.com/yrdsb") {
@@ -421,8 +445,11 @@ struct TeachAssistView: View {
                                     .padding(.top, get(type: "menuButton"))
                                     .padding(.bottom, get(type: "menuButton"))
                                     .onTapGesture {
-                                        self.showSheet = true
                                         self.type = "bugreport"
+                                        withAnimation {
+                                            self.showSheet = true
+                                        }
+                                        
                                     }
                                     Divider()
                                 }
@@ -482,14 +509,14 @@ struct TeachAssistView: View {
         .alert(isPresented: self.$userDataVM.loadFailed) {
             Alert(title: Text("Connection Error"), message: Text("Unable to reach TeachAssist. Your marks could not be updated."), dismissButton: .default(Text("OK")))
         }
-        .sheet(isPresented: $showSheet) {
-            if self.type == "web" {
-                WebsiteView(url: self.url, show: self.$showSheet).environmentObject(self.userDataVM)
-            }
-            else if self.type == "bugreport" {
-                BugReportView(showBugReport: self.$showSheet).environmentObject(self.userDataVM)
-            }
-        }
+//        .sheet(isPresented: $showSheet) {
+//            if self.type == "web" {
+//                WebsiteView(url: self.url, show: self.$showSheet).environmentObject(self.userDataVM)
+//            }
+//            else if self.type == "bugreport" {
+//                BugReportView(showBugReport: self.$showSheet).environmentObject(self.userDataVM)
+//            }
+//        }
         
         //}
         //.onAppear() {

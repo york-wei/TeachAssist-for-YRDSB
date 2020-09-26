@@ -37,7 +37,9 @@ struct WebsiteView: View {
                     WebView(url: self.url).environmentObject(self.userDataVM)
                 //}
                 Button(action: {
-                    self.show = false
+                    withAnimation {
+                        self.show = false
+                    }
                 }) {
                     Image(systemName: "xmark")
                         .font(.system(size: 14, weight: .semibold))
