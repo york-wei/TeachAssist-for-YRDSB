@@ -25,10 +25,20 @@ struct CourseView: View {
         
         ZStack {
             
-            if self.add {
-                AddEvaluationView(add: self.$add).environmentObject(self.userDataVM)
+            if #available(iOS 14.0, *) {
+                VStack {
+                }
+                .fullScreenCover(isPresented: self.$add){
+                    AddEvaluationView(add: self.$add).environmentObject(self.userDataVM)
+                }
+            } else {
+                VStack {
+                }
+                .sheet(isPresented: self.$add) {
+                    AddEvaluationView(add: self.$add).environmentObject(self.userDataVM)
+                }
             }
-            else {
+            
                     ScrollView (showsIndicators: false) {
                     
                     VStack (alignment: .leading) {
@@ -185,7 +195,6 @@ struct CourseView: View {
 
                 }
                 .background(Color("BackgroundColor"))
-            }
         }
     }
 

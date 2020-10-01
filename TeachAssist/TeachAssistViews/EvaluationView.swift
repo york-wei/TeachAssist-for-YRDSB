@@ -245,24 +245,13 @@ struct EvaluationView: View {
             }
             .fullScreenCover(isPresented: self.$edit){
                 EditEvaluationView(edit: self.$edit, evaluation: self.evaluation).environmentObject(self.userDataVM)
-                
-                //        .sheet(isPresented: self.$edit) {
-                //            EditEvaluationView(edit: self.$edit, evaluation: self.evaluation).environmentObject(self.userDataVM)
-                //        }
             }
         } else {
             VStack {
             }
-            
             .sheet(isPresented: self.$edit) {
                 EditEvaluationView(edit: self.$edit, evaluation: self.evaluation).environmentObject(self.userDataVM)
             }
         }
     }
 }
-
-//struct AssignmentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//       EvaluationView()
-//    }
-//}

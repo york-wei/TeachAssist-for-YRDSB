@@ -29,6 +29,10 @@ struct TeachAssistView: View {
     @State var menu = false
     
     @State var showSheet = false
+    
+    @State var showWeb = false
+    @State var showBug = false
+    
     @State var url = ""
     
     @State var type = ""
@@ -52,15 +56,8 @@ struct TeachAssistView: View {
                 CourseView(opened: self.$opened, courseIndex: self.index).environmentObject(self.userDataVM)
                     .transition(.move(edge: .trailing))
             }
-            else if self.showSheet {
-                if self.type == "web" {
-                    WebsiteView(url: self.url, show: self.$showSheet).environmentObject(self.userDataVM)
-                }
-                else if self.type == "bugreport" {
-                    BugReportView(showBugReport: self.$showSheet).environmentObject(self.userDataVM)
-                }
-            }
             else {
+                
                 ScrollView(showsIndicators: false) {
                     
                     VStack(alignment: .leading) {
@@ -232,6 +229,7 @@ struct TeachAssistView: View {
                             }
                             
                             VStack {
+                                
                                 VStack (alignment: .leading){//Theme setting
                                     HStack {
                                         Image(systemName: "circle.lefthalf.fill")
@@ -293,8 +291,10 @@ struct TeachAssistView: View {
                                     .onTapGesture {
                                         if self.userDataVM.studentID != "demo" {
                                             self.url = "https://ta.yrdsb.ca/live/m/index.php?error_message=0"
+                                            self.userDataVM.url = "https://ta.yrdsb.ca/live/m/index.php?error_message=0"
                                             self.type = "web"
                                             withAnimation {
+                                                self.showWeb = true
                                                 self.showSheet = true
                                             }
                                         }
@@ -325,8 +325,10 @@ struct TeachAssistView: View {
                                     .onTapGesture {
                                         if self.userDataVM.studentID != "demo" {
                                             self.url = "https://mypathwayplanner.yrdsb.ca/"
+                                            self.userDataVM.url = "https://mypathwayplanner.yrdsb.ca/"
                                             self.type = "web"
                                             withAnimation {
+                                                self.showWeb = true
                                                 self.showSheet = true
                                             }
                             
@@ -359,8 +361,10 @@ struct TeachAssistView: View {
                                     .onTapGesture {
                                         if self.userDataVM.studentID != "demo" {
                                             self.url = "https://moodle2.yrdsb.ca/login/index.php"
+                                            self.userDataVM.url = "https://moodle2.yrdsb.ca/login/index.php"
                                             self.type = "web"
                                             withAnimation {
+                                                self.showWeb = true
                                                 self.showSheet = true
                                             }
                                         }
@@ -391,8 +395,10 @@ struct TeachAssistView: View {
                                     .onTapGesture {
                                         if self.userDataVM.studentID != "demo" {
                                             self.url = "https://twitter.com/yrdsb"
+                                            self.userDataVM.url = "https://twitter.com/yrdsb"
                                             self.type = "web"
                                             withAnimation {
+                                                self.showWeb = true
                                                 self.showSheet = true
                                             }
                                         }
@@ -447,6 +453,7 @@ struct TeachAssistView: View {
                                     .onTapGesture {
                                         self.type = "bugreport"
                                         withAnimation {
+                                            self.showBug = true
                                             self.showSheet = true
                                         }
                                         
@@ -472,6 +479,30 @@ struct TeachAssistView: View {
                                     .onTapGesture {
                                         withAnimation {
                                             self.userDataVM.logOut()
+                                        }
+                                    }
+                                }
+                                
+                                if #available(iOS 14.0, *) {
+                                    VStack {
+                                    }
+                                    .fullScreenCover(isPresented: self.$showWeb){
+                                        WebsiteView(url: self.url, show: self.$showWeb).environmentObject(self.userDataVM)
+                                    }
+                                    VStack {
+                                    }
+                                    .fullScreenCover(isPresented: self.$showBug){
+                                        BugReportView(showBugReport: self.$showBug).environmentObject(self.userDataVM)
+                                    }
+                                } else {
+                                    VStack {
+                                    }
+                                    .sheet(isPresented: self.$showSheet) {
+                                        if self.type == "web" {
+                                            WebsiteView(url: self.url, show: self.$showSheet).environmentObject(self.userDataVM)
+                                        }
+                                        else if self.type == "bugreport" {
+                                            BugReportView(showBugReport: self.$showSheet).environmentObject(self.userDataVM)
                                         }
                                     }
                                 }

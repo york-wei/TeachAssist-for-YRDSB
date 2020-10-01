@@ -34,7 +34,7 @@ struct WebsiteView: View {
 //                    .background(Color("BackgroundColor"))
 //                }
                 //else {
-                    WebView(url: self.url).environmentObject(self.userDataVM)
+                WebView(url: self.userDataVM.url).environmentObject(self.userDataVM)
                 //}
                 Button(action: {
                     withAnimation {
