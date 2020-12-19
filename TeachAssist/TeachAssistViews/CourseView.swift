@@ -30,6 +30,7 @@ struct CourseView: View {
                 }
                 .fullScreenCover(isPresented: self.$add){
                     AddEvaluationView(add: self.$add).environmentObject(self.userDataVM)
+                        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 }
             } else {
                 VStack {

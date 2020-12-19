@@ -245,6 +245,7 @@ struct EvaluationView: View {
             }
             .fullScreenCover(isPresented: self.$edit){
                 EditEvaluationView(edit: self.$edit, evaluation: self.evaluation).environmentObject(self.userDataVM)
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             }
         } else {
             VStack {

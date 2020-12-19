@@ -488,11 +488,13 @@ struct TeachAssistView: View {
                                     }
                                     .fullScreenCover(isPresented: self.$showWeb){
                                         WebsiteView(url: self.url, show: self.$showWeb).environmentObject(self.userDataVM)
+                                            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                                     }
                                     VStack {
                                     }
                                     .fullScreenCover(isPresented: self.$showBug){
                                         BugReportView(showBugReport: self.$showBug).environmentObject(self.userDataVM)
+                                            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                                     }
                                 } else {
                                     VStack {
