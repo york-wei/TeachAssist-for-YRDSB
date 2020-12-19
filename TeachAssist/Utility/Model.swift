@@ -69,6 +69,10 @@ public enum Model : String {
     iPhone11Pro        = "iPhone 11 Pro",
     iPhone11ProMax     = "iPhone 11 Pro Max",
     iPhoneSESecondGen  = "iPhone SE Second Gen",
+    iPhone12Mini = "iPhone 12 Mini",
+    iPhone12 = "iPhone 12",
+    iPhone12Pro = "iPhone 12 Pro",
+    iPhone12ProMax = "iPhone 12 Pro Max",
 
     //Apple TV
     AppleTV            = "Apple TV",
@@ -197,6 +201,10 @@ public extension UIDevice {
             "iPhone12,3" : .iPhone11Pro,
             "iPhone12,5" : .iPhone11ProMax,
             "iPhone12,8" : .iPhoneSESecondGen,
+            "iPhone13,1" : .iPhone12Mini,
+            "iPhone13,2" : .iPhone12,
+            "iPhone13,3" : .iPhone12Pro,
+            "iPhone13,4" : .iPhone12ProMax,
 
             //Apple TV
             "AppleTV5,3" : .AppleTV,

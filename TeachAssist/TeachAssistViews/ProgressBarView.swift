@@ -20,7 +20,7 @@ struct ProgressBarView: View {
             self.percentage = percentage / 100
         }
         else {
-            self.percentage = 100
+            self.percentage = 1
         }
         
         

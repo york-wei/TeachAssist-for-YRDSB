@@ -550,26 +550,26 @@ struct TeachAssistView: View {
 //        }
         
         //}
-        //.onAppear() {
+        .onAppear() {
         
-        //            if UserDefaults.standard.integer(forKey: "timesOpened") == 10 || UserDefaults.standard.integer(forKey: "timesOpened") == 50 || UserDefaults.standard.integer(forKey: "timesOpened") % 100 == 0 {
-        //                SKStoreReviewController.requestReview()
-        //                Analytics.logEvent("requested_review", parameters: ["timesOpened":String(UserDefaults.standard.integer(forKey: "timesOpened"))])
-        //                UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "timesOpened")+1, forKey: "timesOpened")
-        //            }
-        //
-        //            if UserDefaults.standard.bool(forKey: "notFirstOpen") {
-        //                if !UserDefaults.standard.bool(forKey: "requestedReview") {
-        //                    SKStoreReviewController.requestReview()
-        //                    Analytics.logEvent("requested_review", parameters: [:])
-        //                    UserDefaults.standard.set(true, forKey: "requestedReview")
-        //                }
-        //            }
-        //            else {
-        //                UserDefaults.standard.set(true, forKey: "notFirstOpen")
-        //            }
+                    if UserDefaults.standard.integer(forKey: "timesOpened") == 10 || UserDefaults.standard.integer(forKey: "timesOpened") == 50 || UserDefaults.standard.integer(forKey: "timesOpened") % 100 == 0 {
+                        SKStoreReviewController.requestReview()
+                        Analytics.logEvent("requested_review", parameters: ["timesOpened":String(UserDefaults.standard.integer(forKey: "timesOpened"))])
+                        UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "timesOpened")+1, forKey: "timesOpened")
+                    }
         
-        //}
+                    if UserDefaults.standard.bool(forKey: "notFirstOpen") {
+                        if !UserDefaults.standard.bool(forKey: "requestedReview") {
+                            SKStoreReviewController.requestReview()
+                            Analytics.logEvent("requested_review", parameters: [:])
+                            UserDefaults.standard.set(true, forKey: "requestedReview")
+                        }
+                    }
+                    else {
+                        UserDefaults.standard.set(true, forKey: "notFirstOpen")
+                    }
+        
+        }
         
     }
     
@@ -596,15 +596,18 @@ public func get(type: String) -> CGFloat {
         
     //    iPhone 6S/7/8
     case .iPhone6S, .iPhone7, .iPhone8, .iPhoneSESecondGen: topPadding = 40.0; sidePadding = 37; cellHeight = 95.0; titleFont = 32.0; regularFont = 14.0; smallFont = 11.5; tabHeight = 55; loginTopPadding = 45.0; menuTopBottomPadding = 50.0; menuButtonPadding = 15.0
+    
+    //    iPhone 12 Mini
+    case .iPhone12Mini: topPadding = 60.0; sidePadding = 37; cellHeight = 95.0; titleFont = 32.0; regularFont = 14.0; smallFont = 11; tabHeight = 55; loginTopPadding = 120.0; menuTopBottomPadding = 120.0; menuButtonPadding = 15.0
         
-    //    iPhone 11/XR
-    case .iPhone11, .iPhoneXR: topPadding = 60.0; cellHeight = 110.0; tabHeight = 80.0; loginTopPadding = 130.0; menuButtonPadding = 25.0
+    //    iPhone 11/XR/iPhone 12
+    case .iPhone11, .iPhoneXR, .iPhone12: topPadding = 60.0; cellHeight = 110.0; tabHeight = 80.0; loginTopPadding = 130.0; menuButtonPadding = 25.0; smallFont = 11
         
     //    iPhone X/11 Pro/XS
-    case .iPhoneX, .iPhone11Pro, .iPhoneXS: topPadding = 60.0; sidePadding = 39.0; cellHeight = 105.0; titleFont = 32.0; regularFont = 14.0; smallFont = 11.5; tabHeight = 80.0; loginTopPadding = 130.0
+    case .iPhoneX, .iPhone11Pro, .iPhoneXS, .iPhone12Pro: topPadding = 60.0; sidePadding = 39.0; cellHeight = 105.0; titleFont = 32.0; regularFont = 14.0; smallFont = 11.5; tabHeight = 80.0; loginTopPadding = 130.0
         
     //    iPhone 11ProMax/XSMax
-    case .iPhone11ProMax, .iPhoneXSMax: topPadding = 70.0; cellHeight = 110.0; tabHeight = 80.0; loginTopPadding = 130.0; menuButtonPadding = 25.0
+    case .iPhone11ProMax, .iPhoneXSMax, .iPhone12ProMax: topPadding = 70.0; cellHeight = 110.0; tabHeight = 80.0; loginTopPadding = 130.0; menuButtonPadding = 25.0
         
     //    iPhone 6S/7/8 Plus
     default: break
