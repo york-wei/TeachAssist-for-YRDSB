@@ -11,8 +11,7 @@ target 'TeachAssist' do
   pod 'Siren'
   pod 'Firebase/Analytics'
   pod 'Firebase/Database'
-  pod 'Fabric'
-  pod 'Crashlytics'
+  pod 'Firebase/Crashlytics'
   pod 'SSSwiftUIGIFView'
   
   target 'TeachAssistTests' do

@@ -2,9 +2,7 @@
 
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 
-[![Travis CI Status](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master)](https://travis-ci.org/ArtSabintsev/Siren) ![Documentation](https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg) ![Swift Support](https://img.shields.io/badge/Swift-5.2%2C%205.1%2C%205.0%2C%204.2%2C%204.1%2C%203.2%2C%203.1%202.3-orange.svg)
-
-[![CocoaPods](https://img.shields.io/cocoapods/v/Siren.svg)](https://cocoapods.org/pods/Siren)  [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Accio supported](https://img.shields.io/badge/Accio-supported-0A7CF5.svg?style=flat)](https://github.com/JamitLabs/Accio) [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://swift.org/package-manager/)
+[![Travis CI Status](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master)](https://travis-ci.org/ArtSabintsev/Siren) ![Swift Support](https://img.shields.io/badge/Swift-5.3-orange.svg) [![CocoaPods](https://img.shields.io/cocoapods/v/Siren.svg)](https://cocoapods.org/pods/Siren) [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://swift.org/package-manager/) [![Accio supported](https://img.shields.io/badge/Accio-supported-0A7CF5.svg?style=flat)](https://github.com/JamitLabs/Accio) 
 
 ---
 
@@ -46,15 +44,11 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 ## Features
 
 ### Current Features
-- [x] CocoaPods, Carthage, and Swift Package Manager Support (see [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions))
+- [x] CocoaPods and Swift Package Manager Support (see [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions))
 - [x] Three Types of Alerts (see [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots))
 - [x] Highly Customizable Presentation Rules (see [Implementation Examples](https://github.com/ArtSabintsev/Siren#implementation-examples))
 - [x] Localized for 40+ Languages (see [Localization](https://github.com/ArtSabintsev/Siren#localization))
 - [x] Device Compatibility Check (see [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility))
-- [x] 100% Documentation Coverage (see https://sabintsev.com/Siren)
-
-### Future Features
-A list of future development work can be found on [Siren's Kanban Board](https://github.com/ArtSabintsev/Siren/projects/1).
 
 ---
 
@@ -103,17 +97,6 @@ pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'sw
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.2' # Swift 3.2
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.1' # Swift 3.1
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3' # Swift 2.3
-```
-
-### Carthage
-```swift
-github "ArtSabintsev/Siren" // Swift 5.1+
-github "ArtSabintsev/Siren" "swift5.0" // Swift 5.0
-github "ArtSabintsev/Siren" "swift4.2" // Swift 4.2
-github "ArtSabintsev/Siren" "swift4.1" // Swift 4.1
-github "ArtSabintsev/Siren" "swift3.2" // Swift 3.2
-github "ArtSabintsev/Siren" "swift3.1" // Swift 3.1
-github "ArtSabintsev/Siren" "swift2.3" // Swift 2.3
 ```
 
 ### Swift Package Manager
@@ -192,7 +175,7 @@ If an app update is available, Siren checks to make sure that the version of iOS
 ## Testing Siren Locally
 Temporarily change the version string in Xcode (within the `.xcodeproj` file) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
 
-If you currently don't have an app in the store, change your bundleID to one that is already in the store. In the sample app packaged with this library, we use the [App Store Connect](https://itunes.apple.com/app/id1234793120) app's bundleID: `com.apple.AppStoreConnect`.
+If you currently don't have an app in the store, change your bundleID to one that is already in the store. In the sample app packaged with this library, we use Facebook's Bundle ID: `com.facebook.Facebook`.
 
 ## Words of Caution
 Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning the JSON may state that the new version of the app has been released, while no new binary is made available for download via the App Store. It is for this reason that Siren will, by default, wait 1 day (24 hours) after the JSON has been updated to prompt the user to update. To change the default setting, please modify the value of `showAlertAfterCurrentVersionHasBeenReleasedForDays`.

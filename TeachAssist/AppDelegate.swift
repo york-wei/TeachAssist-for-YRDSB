@@ -10,8 +10,6 @@ import UIKit
 import IQKeyboardManagerSwift
 import Siren
 import Firebase
-import Fabric
-import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,13 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
-        //Fabric.sharedSDK().debug = true
-        
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         checkUpdate()
-        
-        Fabric.with([Crashlytics.self])
+    
         
         return true
     }
