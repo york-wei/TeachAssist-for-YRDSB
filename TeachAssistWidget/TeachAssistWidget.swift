@@ -45,7 +45,30 @@ struct TeachAssistWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        VStack (alignment:.leading){
+            LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.9441892505, green: 0, blue: 0.4814293981, alpha: 1)), Color(#colorLiteral(red: 0.3960784314, green: 0.03137254902, blue: 0.862745098, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .frame(height: 50)
+                .mask(
+                    //HStack(alignment: .center) {
+                     //   Spacer()
+                        Text("New Marks\nAvailable").font(.title3).fontWeight(.heavy)
+                     //   Spacer()
+                    //}
+                )
+            //Spacer()
+//            Divider()
+            Text("Evaluation Added For ICS4U1-01").font(.footnote).fontWeight(.regular).opacity(0.9)
+            Spacer()
+            Text("Updated: 1:13PM").font(.footnote).fontWeight(.regular).opacity(0.5)
+            Spacer()
+//            HStack{
+//                Spacer()
+//                Image("Logo")
+//                    .resizable()
+//                    .frame(width: 25, height: 25)
+//            }
+            
+        }.padding(15)
     }
 }
 
