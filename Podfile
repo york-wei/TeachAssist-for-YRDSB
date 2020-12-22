@@ -12,6 +12,7 @@ target 'TeachAssist' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Database'
   pod 'Firebase/Crashlytics'
+  pod 'Firebase/Messaging'
   pod 'SSSwiftUIGIFView'
   
   target 'TeachAssistTests' do
