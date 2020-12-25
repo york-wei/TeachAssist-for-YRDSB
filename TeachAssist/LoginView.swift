@@ -141,6 +141,6 @@ struct LoginView: View {
                 
             }
         }
-    .background(Color("BackgroundColor"))
+        .background(Color("BackgroundColor"))
     }
 }

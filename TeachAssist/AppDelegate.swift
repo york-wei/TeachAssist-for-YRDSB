@@ -11,6 +11,7 @@ import IQKeyboardManagerSwift
 import Siren
 import Firebase
 import FirebaseMessaging
+import FirebaseAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -21,8 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
-        IQKeyboardManager.shared.enable = true
+        //IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         checkUpdate()
         
           UNUserNotificationCenter.current().delegate = self
@@ -33,13 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             completionHandler: {_, _ in })
 
         application.registerForRemoteNotifications()
-        
         Messaging.messaging().token { token, error in
           if let error = error {
             print("Error fetching FCM registration token: \(error)")
           } else if let token = token {
             print("FCM registration token: \(token)")
-            //self.fcmRegTokenMessage.text  = "Remote FCM registration token: \(token)"
+            UserDefaults.standard.setValue(token, forKey: "PushToken")
           }
         }
     
