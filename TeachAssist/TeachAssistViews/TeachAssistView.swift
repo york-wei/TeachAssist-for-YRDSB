@@ -96,7 +96,7 @@ struct TeachAssistView: View {
                                 Spacer()
                                 Button(action: {
                                     self.userDataVM.isLoading = true
-                                    self.userDataVM.load()
+                                    self.userDataVM.load(launch: false)
                                 }) {
                                     if self.userDataVM.isLoading {
                                         ActivityIndicator(isAnimating: .constant(true), style: .medium)

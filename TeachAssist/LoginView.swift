@@ -109,7 +109,7 @@ struct LoginView: View {
                                 self.userDataVM.studentPW = self.studentPW
                                 self.userDataVM.loadFailed = false
                                 self.userDataVM.isLoading = true
-                                self.userDataVM.load()
+                                self.userDataVM.load(launch: true)
                             }) {
                                 if self.userDataVM.isLoading {
                                     ActivityIndicator(isAnimating: .constant(true), style: .medium)
