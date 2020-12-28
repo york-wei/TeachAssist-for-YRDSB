@@ -9,6 +9,7 @@
 import SwiftUI
 import StoreKit
 import FirebaseAnalytics
+import FirebaseRemoteConfig
 
 struct TeachAssistView: View {
     
@@ -553,23 +554,35 @@ struct TeachAssistView: View {
         
         //}
         .onAppear() {
+            
+            let remoteConfig = RemoteConfig.remoteConfig()
+            let defaultValue = ["ask_for_rating": false as NSObject]
+            remoteConfig.setDefaults(defaultValue)
+            remoteConfig.fetch(withExpirationDuration: 0) { (status, error) in
+                guard error == nil else { return }
+                remoteConfig.activate()
+            }
+            if remoteConfig.configValue(forKey: "ask_for_rating").boolValue {
+                SKStoreReviewController.requestReview()
+            }
         
-                    if UserDefaults.standard.integer(forKey: "timesOpened") == 10 || UserDefaults.standard.integer(forKey: "timesOpened") == 50 || UserDefaults.standard.integer(forKey: "timesOpened") % 100 == 0 {
-                        SKStoreReviewController.requestReview()
-                        Analytics.logEvent("requested_review", parameters: ["timesOpened":String(UserDefaults.standard.integer(forKey: "timesOpened"))])
-                        UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "timesOpened")+1, forKey: "timesOpened")
-                    }
-        
-                    if UserDefaults.standard.bool(forKey: "notFirstOpen") {
-                        if !UserDefaults.standard.bool(forKey: "requestedReview") {
-                            SKStoreReviewController.requestReview()
-                            Analytics.logEvent("requested_review", parameters: [:])
-                            UserDefaults.standard.set(true, forKey: "requestedReview")
-                        }
-                    }
-                    else {
-                        UserDefaults.standard.set(true, forKey: "notFirstOpen")
-                    }
+            //if RemoteCon
+//                    if UserDefaults.standard.integer(forKey: "timesOpened") == 10 || UserDefaults.standard.integer(forKey: "timesOpened") == 50 || UserDefaults.standard.integer(forKey: "timesOpened") % 100 == 0 {
+//                        SKStoreReviewController.requestReview()
+//                        Analytics.logEvent("requested_review", parameters: ["timesOpened":String(UserDefaults.standard.integer(forKey: "timesOpened"))])
+//                        UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "timesOpened")+1, forKey: "timesOpened")
+//                    }
+//
+//                    if UserDefaults.standard.bool(forKey: "notFirstOpen") {
+//                        if !UserDefaults.standard.bool(forKey: "requestedReview") {
+//                            SKStoreReviewController.requestReview()
+//                            Analytics.logEvent("requested_review", parameters: [:])
+//                            UserDefaults.standard.set(true, forKey: "requestedReview")
+//                        }
+//                    }
+//                    else {
+//                        UserDefaults.standard.set(true, forKey: "notFirstOpen")
+//                    }
         
         }
         

@@ -15,6 +15,7 @@ target 'TeachAssist' do
   pod 'Firebase/Messaging'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'Firebase/RemoteConfig'
   pod 'SSSwiftUIGIFView'
   
   target 'TeachAssistTests' do
