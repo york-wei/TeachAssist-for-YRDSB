@@ -27,22 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         checkUpdate()
         
-          UNUserNotificationCenter.current().delegate = self
-
-          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-          UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: {_, _ in })
-
-        application.registerForRemoteNotifications()
-        Messaging.messaging().token { token, error in
-          if let error = error {
-            print("Error fetching FCM registration token: \(error)")
-          } else if let token = token {
-            print("FCM registration token: \(token)")
-            UserDefaults.standard.setValue(token, forKey: "PushToken")
-          }
-        }
+        UNUserNotificationCenter.current().delegate = self
     
         return true
     }
