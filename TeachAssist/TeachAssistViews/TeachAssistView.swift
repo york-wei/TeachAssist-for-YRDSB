@@ -543,16 +543,6 @@ struct TeachAssistView: View {
         .alert(isPresented: self.$userDataVM.loadFailed) {
             Alert(title: Text("Connection Error"), message: Text("Unable to reach TeachAssist. Your marks could not be updated."), dismissButton: .default(Text("OK")))
         }
-//        .sheet(isPresented: $showSheet) {
-//            if self.type == "web" {
-//                WebsiteView(url: self.url, show: self.$showSheet).environmentObject(self.userDataVM)
-//            }
-//            else if self.type == "bugreport" {
-//                BugReportView(showBugReport: self.$showSheet).environmentObject(self.userDataVM)
-//            }
-//        }
-        
-        //}
         .onAppear() {
             
             let remoteConfig = RemoteConfig.remoteConfig()
@@ -565,24 +555,6 @@ struct TeachAssistView: View {
             if remoteConfig.configValue(forKey: "ask_for_rating").boolValue {
                 SKStoreReviewController.requestReview()
             }
-        
-            //if RemoteCon
-//                    if UserDefaults.standard.integer(forKey: "timesOpened") == 10 || UserDefaults.standard.integer(forKey: "timesOpened") == 50 || UserDefaults.standard.integer(forKey: "timesOpened") % 100 == 0 {
-//                        SKStoreReviewController.requestReview()
-//                        Analytics.logEvent("requested_review", parameters: ["timesOpened":String(UserDefaults.standard.integer(forKey: "timesOpened"))])
-//                        UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "timesOpened")+1, forKey: "timesOpened")
-//                    }
-//
-//                    if UserDefaults.standard.bool(forKey: "notFirstOpen") {
-//                        if !UserDefaults.standard.bool(forKey: "requestedReview") {
-//                            SKStoreReviewController.requestReview()
-//                            Analytics.logEvent("requested_review", parameters: [:])
-//                            UserDefaults.standard.set(true, forKey: "requestedReview")
-//                        }
-//                    }
-//                    else {
-//                        UserDefaults.standard.set(true, forKey: "notFirstOpen")
-//                    }
         
         }
         
