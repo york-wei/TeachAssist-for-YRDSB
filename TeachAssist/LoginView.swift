@@ -14,7 +14,6 @@ struct LoginView: View {
     @State var studentPW = ""
     @State var loggingIn = false
     @State var loginSuccessful = false
-    @State var loginFailed = false
     @EnvironmentObject var userDataVM: UserDataViewModel
     
     var body: some View {
