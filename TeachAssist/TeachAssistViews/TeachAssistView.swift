@@ -585,7 +585,7 @@ public func get(type: String) -> CGFloat {
     case .iPhone6S, .iPhone7, .iPhone8, .iPhoneSESecondGen: topPadding = 40.0; sidePadding = 37; cellHeight = 95.0; titleFont = 32.0; regularFont = 14.0; smallFont = 11.5; tabHeight = 55; loginTopPadding = 45.0; menuTopBottomPadding = 50.0; menuButtonPadding = 15.0
     
     //    iPhone 12 Mini
-    case .iPhone12Mini: topPadding = 60.0; sidePadding = 37; cellHeight = 95.0; titleFont = 32.0; regularFont = 14.0; smallFont = 11; tabHeight = 55; loginTopPadding = 120.0; menuTopBottomPadding = 120.0; menuButtonPadding = 15.0
+    case .iPhone12Mini: topPadding = 60.0; sidePadding = 37; cellHeight = 95.0; titleFont = 32.0; regularFont = 14.0; smallFont = 11; tabHeight = 55; loginTopPadding = 135.0; menuTopBottomPadding = 120.0; menuButtonPadding = 15.0
         
     //    iPhone 11/XR/iPhone 12
     case .iPhone11, .iPhoneXR, .iPhone12: topPadding = 60.0; cellHeight = 110.0; tabHeight = 80.0; loginTopPadding = 130.0; menuButtonPadding = 25.0; smallFont = 11

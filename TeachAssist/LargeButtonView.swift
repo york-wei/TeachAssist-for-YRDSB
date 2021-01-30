@@ -18,8 +18,9 @@ struct LargeButtonView: View {
         ZStack (alignment: Alignment(horizontal: .center, vertical: .center)) {
             
             Rectangle()
+                .foregroundColor(Color(#colorLiteral(red: 0.1333333333, green: 0.1333333333, blue: 0.1333333333, alpha: 1)))
                 .frame(height: 60)
-                .cornerRadius(10)
+                .cornerRadius(15)
                 .shadow(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.25)), radius: 20, x: 0, y: 5)
             
             Text(buttonText)
@@ -27,7 +28,7 @@ struct LargeButtonView: View {
                 .fontWeight(.semibold)
             
         }
-        .scaleEffect(tap ? 1.1 : 1)
+        .scaleEffect(tap ? 1.05 : 1)
         .animation(.spring())
         .onTapGesture {
             self.tap = true
@@ -36,7 +37,6 @@ struct LargeButtonView: View {
                 self.tap = false
             }
         }
-        .padding()
         
     }
 }
