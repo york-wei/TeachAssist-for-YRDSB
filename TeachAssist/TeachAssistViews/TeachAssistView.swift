@@ -100,7 +100,7 @@ struct TeachAssistView: View {
                                     self.userDataVM.load(launch: false)
                                 }) {
                                     if self.userDataVM.isLoading {
-                                        ActivityIndicator(isAnimating: .constant(true), style: .medium)
+                                        ActivityIndicator(isAnimating: true)
                                     }
                                     else {
                                         Image(systemName: "arrow.clockwise")
@@ -619,14 +619,13 @@ public func get(type: String) -> CGFloat {
 
 struct ActivityIndicator: UIViewRepresentable {
     
-    @Binding var isAnimating: Bool
-    let style: UIActivityIndicatorView.Style
-    
-    func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
-        return UIActivityIndicatorView(style: style)
-    }
-    
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
+    typealias UIView = UIActivityIndicatorView
+    var isAnimating: Bool
+    var configuration = { (indicator: UIView) in }
+
+    func makeUIView(context: UIViewRepresentableContext<Self>) -> UIView { UIView() }
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<Self>) {
         isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
+        configuration(uiView)
     }
 }

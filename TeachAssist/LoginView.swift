@@ -12,6 +12,7 @@ struct LoginView: View {
     
     @State var studentID = ""
     @State var studentPW = ""
+    @State var buttonTapped = false
     @EnvironmentObject var userDataVM: UserDataViewModel
     
     var body: some View {
@@ -23,6 +24,7 @@ struct LoginView: View {
                 .resizable()
                 .frame(width: 115, height: 115)
                 .padding(.bottom, 10)
+                .shadow(color: Color("RingDropShadowColor"), radius: 3, x: 0, y: 0)
             
             // Texts
             Text("TeachAssist")
@@ -52,9 +54,6 @@ struct LoginView: View {
                             .multilineTextAlignment(.leading)
                             .autocapitalization(.none)
                             .keyboardType(.asciiCapable)
-                            .onTapGesture {
-                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                            }
                         
                     }
                     .padding(.bottom, 9)
@@ -76,9 +75,6 @@ struct LoginView: View {
                         SecureField("Password", text: $studentPW)
                             .font(.footnote)
                             .multilineTextAlignment(.leading)
-                            .onTapGesture {
-                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                            }
                         
                     }
                     .padding(.bottom, 9)
@@ -97,8 +93,51 @@ struct LoginView: View {
                     
             Spacer()
             
+            //Login Failed Indicator
+            Text("Invalid Login")
+                .font(.subheadline)
+                .fontWeight(.regular)
+                .foregroundColor(Color.red)
+                .opacity(self.userDataVM.loadFailed ? 1 : 0)
+            
+            Spacer()
+            
             // Sign In Button
-            LargeButtonView(buttonText: "Sign In")
+            ZStack (alignment: Alignment(horizontal: .center, vertical: .center)) {
+                
+                Rectangle()
+                    .foregroundColor(Color(#colorLiteral(red: 0.1333333333, green: 0.1333333333, blue: 0.1333333333, alpha: 1)))
+                    .frame(height: 60)
+                    .cornerRadius(15)
+                    .shadow(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.25)), radius: 20, x: 0, y: 5)
+                
+                if self.userDataVM.isLoading {
+                    ActivityIndicator(isAnimating: true) {
+                        $0.color = .white
+                    }
+                } else {
+                    Text("Sign In")
+                        .foregroundColor(.white)
+                        .fontWeight(.semibold)
+                }
+                
+            }
+            .onTapGesture {
+                self.buttonTapped = true
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.buttonTapped = false
+                }
+                self.userDataVM.studentID = self.studentID
+                self.userDataVM.studentPW = self.studentPW
+                self.userDataVM.loadFailed = false
+                self.userDataVM.isLoading = true
+                self.userDataVM.load(launch: true)
+            }
+            .scaleEffect(buttonTapped ? 1.05 : 1)
+            .animation(.spring())
+            .disabled(self.userDataVM.isLoading)
+            
             
         }
         .padding(.top, get(type: "loginTop"))
