@@ -50,11 +50,11 @@ struct BreakdownView: View {
                     HStack {
                         Text(String(format: "K/U (Weight: %.1f)", kWeight))
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                         Spacer()
                         Text(k >= 0 ? String(format: "%.1f%%", k) : "No Mark")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                     }
                     ProgressBarView(percentage: k)
                         .offset(x: 0, y: 6)
@@ -64,11 +64,11 @@ struct BreakdownView: View {
                     HStack {
                         Text(String(format: "T (Weight: %.1f)", tWeight))
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                         Spacer()
                         Text(t >= 0 ? String(format: "%.1f%%", t) : "No Mark")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                     }
                     ProgressBarView(percentage: t)
                         .offset(x: 0, y: 6)
@@ -78,11 +78,11 @@ struct BreakdownView: View {
                     HStack {
                         Text(String(format: "C (Weight: %.1f)", cWeight))
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                         Spacer()
                         Text(c >= 0 ? String(format: "%.1f%%", c) : "No Mark")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                     }
                     ProgressBarView(percentage: c)
                         .offset(x: 0, y: 6)
@@ -92,11 +92,11 @@ struct BreakdownView: View {
                     HStack {
                         Text(String(format: "A (Weight: %.1f)", aWeight))
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                         Spacer()
                         Text(a >= 0 ? String(format: "%.1f%%", a) : "No Mark")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                     }
                     ProgressBarView(percentage: a)
                         .offset(x: 0, y: 6)
@@ -106,11 +106,11 @@ struct BreakdownView: View {
                     HStack {
                         Text(String(format: "O (Weight: %.1f)", oWeight))
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                         Spacer()
                         Text(o >= 0 ? String(format: "%.1f%%", o) : "No Mark")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                     }
                     ProgressBarView(percentage: o)
                         .offset(x: 0, y: 6)
@@ -120,11 +120,11 @@ struct BreakdownView: View {
                     HStack {
                         Text(String(format: "F (Weight: %.1f)", fWeight))
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                         Spacer()
                         Text(f >= 0 ? String(format: "%.1f%%", f) : "No Mark")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                     }
                     ProgressBarView(percentage: f)
                         .offset(x: 0, y: 6)

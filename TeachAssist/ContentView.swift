@@ -45,7 +45,7 @@ struct ContentView: View {
                                 Text(self.userDataVM.devMessage)
                                     .font(.system(size: get(type: "small"), weight: .regular))
                                     .frame(maxWidth: .infinity)
-                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .foregroundColor(Color("PrimaryTextColor"))
                                     .multilineTextAlignment(.center)
                                     .padding(.trailing)
                                     .padding(.leading)

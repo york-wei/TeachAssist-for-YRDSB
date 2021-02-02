@@ -30,12 +30,12 @@ struct LoginView: View {
             Text("TeachAssist")
                 .font(.largeTitle)
                 .fontWeight(.bold)
-                .foregroundColor(Color(#colorLiteral(red: 0.1333333333, green: 0.1333333333, blue: 0.1333333333, alpha: 1)))
+                .foregroundColor(Color("PrimaryTextColor"))
             
             Text("For YRDSB")
                 .font(.subheadline)
                 .fontWeight(.regular)
-                .foregroundColor(Color(#colorLiteral(red: 0.1333333333, green: 0.1333333333, blue: 0.1333333333, alpha: 0.3)))
+                .foregroundColor(Color("SecondaryTextColor"))
                 .padding(3)
             
             // Text Fields
@@ -46,7 +46,7 @@ struct LoginView: View {
                     HStack {
                         
                         Image(systemName: "person.fill")
-                            .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.25)))
+                            .foregroundColor(Color("SecondaryTextColor"))
                             .font(.system(.subheadline))
                     
                         TextField("Student Number", text: $studentID)
@@ -54,12 +54,13 @@ struct LoginView: View {
                             .multilineTextAlignment(.leading)
                             .autocapitalization(.none)
                             .keyboardType(.asciiCapable)
+                            .foregroundColor(Color("PrimaryTextColor"))
                         
                     }
                     .padding(.bottom, 9)
                     
                     Rectangle()
-                        .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.25)))
+                        .foregroundColor(Color("SecondaryTextColor"))
                         .frame(height: 1)
                     
                 }
@@ -69,18 +70,19 @@ struct LoginView: View {
                     HStack {
                         
                         Image(systemName: "lock.fill")
-                            .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.25)))
+                            .foregroundColor(Color("SecondaryTextColor"))
                             .font(.system(.subheadline))
                     
                         SecureField("Password", text: $studentPW)
                             .font(.footnote)
                             .multilineTextAlignment(.leading)
+                            .foregroundColor(Color("PrimaryTextColor"))
                         
                     }
                     .padding(.bottom, 9)
                     
                     Rectangle()
-                        .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.25)))
+                        .foregroundColor(Color("SecondaryTextColor"))
                         .frame(height: 1)
                     
                 }
@@ -99,6 +101,7 @@ struct LoginView: View {
                 .fontWeight(.regular)
                 .foregroundColor(Color.red)
                 .opacity(self.userDataVM.loadFailed ? 1 : 0)
+                .animation(.spring())
             
             Spacer()
             
@@ -148,9 +151,3 @@ struct LoginView: View {
     }
     
 }
-
-//struct LoginView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LoginView()
-//    }
-//}

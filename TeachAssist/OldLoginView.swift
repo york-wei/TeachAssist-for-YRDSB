@@ -106,7 +106,7 @@ struct OldLoginView: View {
                             
                             Spacer()
                             
-                            LargeButtonView(buttonText: "Sign In")
+                            //LargeButtonView(buttonText: "Sign In")
                             
 //                            Button(action: {
 //                                self.userDataVM.studentID = self.studentID

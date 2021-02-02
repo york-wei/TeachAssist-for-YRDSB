@@ -70,7 +70,7 @@ struct CourseView: View {
                                 
                                 Text(self.userDataVM.courses[courseIndex].code)
                                     .font(.system(size: get(type: "small"), weight: .regular))
-                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .foregroundColor(Color("PrimaryTextColor"))
                                 
                                 Spacer()
                                 
@@ -107,7 +107,7 @@ struct CourseView: View {
                             .padding(.bottom, 15)
                             Text(!editing ? "Course Average" : "Predicted Course Average")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                         }.padding(.bottom, 30)
                         
                         Picker("Options", selection: $choice) {
@@ -139,7 +139,7 @@ struct CourseView: View {
                                                 .padding(5)
                                             Text("Add New Evaluation")
                                                 .font(.system(size: get(type: "small"), weight: .semibold))
-                                                .foregroundColor(Color("SecondaryTextColor"))
+                                                .foregroundColor(Color("PrimaryTextColor"))
                                         }
 //                                        .sheet(isPresented: self.$add) {
 //                                            AddEvaluationView(add: self.$add).environmentObject(self.userDataVM)

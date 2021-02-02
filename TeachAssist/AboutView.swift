@@ -42,7 +42,7 @@ struct AboutView: View {
                             .offset(x: 0, y: -40)
                         Text("Version \(version)")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .offset(x: 0, y: -25)
                         
                         VStack {
@@ -82,13 +82,13 @@ struct AboutView: View {
                         
                         Text("Independently developed and designed by York Wei.")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .padding(.top, 50)
                             .padding(.bottom, 10)
                             .multilineTextAlignment(.center)
                         Text("This app is not associated with the TeachAssist Foundation or YRDSB.")
                         .font(.system(size: get(type: "small"), weight: .regular))
-                        .foregroundColor(Color("SecondaryTextColor"))
+                        .foregroundColor(Color("PrimaryTextColor"))
                         .multilineTextAlignment(.center)
                     }
                     

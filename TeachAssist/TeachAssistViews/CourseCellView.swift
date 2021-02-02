@@ -30,18 +30,18 @@ struct CourseCellView: View {
                     
                     Text(self.course.code)
                         .font(.system(size: get(type: "small"), weight: .semibold))
-                        .foregroundColor(Color("SecondaryTextColor"))
+                        .foregroundColor(Color("PrimaryTextColor"))
                     
                     if !self.course.period.isEmpty {
                         Text("Period \(self.course.period)")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                     }
                     
                     if !self.course.room.isEmpty {
                         Text("Room \(self.course.room)")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                     }
                     
                     Spacer()
@@ -49,7 +49,7 @@ struct CourseCellView: View {
                     if self.course.parsedAverage >= 0 {
                         Text(String(format: "%.1f%%", self.course.parsedAverage))
                             .font(.system(size: get(type: "small"), weight: .medium))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .padding(.top, 2)
                             .padding(.bottom, 2)
                             .padding(.leading, 5)
@@ -81,7 +81,7 @@ struct CourseCellView: View {
                 else {
                     Text("Mark Unavailable")
                         .font(.system(size: get(type: "small"), weight: .regular))
-                        .foregroundColor(Color("SecondaryTextColor"))
+                        .foregroundColor(Color("PrimaryTextColor"))
                         .offset(x: 0, y: 6)
                 }
                 

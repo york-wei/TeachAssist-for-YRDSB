@@ -35,11 +35,11 @@ struct EvaluationView: View {
                             
                             Text(self.evaluation.name)
                                 .font(.system(size: get(type: "small"), weight: .semibold))
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                             Spacer()
                             Text((self.evaluation.overall != -1) ? String(format: "%.1f%%", self.evaluation.overall) : "Formative")
                                 .font(.system(size: get(type: "small"), weight: .medium))
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                                 .padding(.top, 2)
                                 .padding(.bottom, 2)
                                 .padding(.leading, 5)
@@ -60,7 +60,7 @@ struct EvaluationView: View {
                         Text(self.evaluation.name)
                             .font(.system(size: get(type: "small"), weight: .semibold))
                             
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .offset(x: 0, y: 2)
                         Spacer()
                         Button(action: {
@@ -91,16 +91,16 @@ struct EvaluationView: View {
                             Text((self.evaluation.knowledge.weight > 0) ? String(format: "K/U (Weight: %.1f)", self.evaluation.knowledge.weight) : "K/U (No Weight)")
                                 .font(.system(size: get(type: "small"), weight: .regular))
                                 
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                             Spacer()
                             Text(!self.evaluation.knowledge.score.isEmpty ? "(\(self.evaluation.knowledge.score))" : "")
                                 .font(.system(size: get(type: "small"), weight: .regular))
                                 
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                             Text((self.evaluation.knowledge.percent != -1) ? String(format: "%.1f%%", self.evaluation.knowledge.percent) : "No Mark")
                                 .font(.system(size: get(type: "small"), weight: .regular))
                                 
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                         }
                         ProgressBarView(percentage: self.evaluation.knowledge.percent)
                             .offset(x: 0, y: 6)
@@ -113,16 +113,16 @@ struct EvaluationView: View {
                             Text((self.evaluation.thinking.weight > 0) ? String(format: "T (Weight: %.1f)", self.evaluation.thinking.weight) : "T (No Weight)")
                                 .font(.system(size: get(type: "small"), weight: .regular))
                                 
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                             Spacer()
                             Text(!self.evaluation.thinking.score.isEmpty ? "(\(self.evaluation.thinking.score))" : "")
                                 .font(.system(size: get(type: "small"), weight: .regular))
                                 
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                             Text((self.evaluation.thinking.percent != -1) ? String(format: "%.1f%%", self.evaluation.thinking.percent) : "No Mark")
                                 .font(.system(size: get(type: "small"), weight: .regular))
                                 
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                         }
                         ProgressBarView(percentage: self.evaluation.thinking.percent)
                             .offset(x: 0, y: 6)
@@ -135,14 +135,14 @@ struct EvaluationView: View {
                             Text((self.evaluation.communication.weight > 0) ? String(format: "C (Weight: %.1f)", self.evaluation.communication.weight) : "C (No Weight)")
                                 .font(.system(size: get(type: "small"), weight: .regular))
                                 
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                             Spacer()
                             Text(!self.evaluation.communication.score.isEmpty ? "(\(self.evaluation.communication.score))" : "")
                                 .font(.system(size: get(type: "small"), weight: .regular))
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                             Text((self.evaluation.communication.percent != -1) ? String(format: "%.1f%%", self.evaluation.communication.percent) : "No Mark")
                                 .font(.system(size: get(type: "small"), weight: .regular))
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                         }
                         ProgressBarView(percentage: self.evaluation.communication.percent)
                             .offset(x: 0, y: 6)
@@ -154,16 +154,16 @@ struct EvaluationView: View {
                             
                             Text((self.evaluation.application.weight > 0) ? String(format: "A (Weight: %.1f)", self.evaluation.application.weight) : "A (No Weight)")
                                 .font(.system(size: get(type: "small"), weight: .regular))
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                             Spacer()
                             Text(!self.evaluation.application.score.isEmpty ? "(\(self.evaluation.application.score))" : "")
                                 .font(.system(size: get(type: "small"), weight: .regular))
                                 
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                             Text((self.evaluation.application.percent != -1) ? String(format: "%.1f%%", self.evaluation.application.percent) : "No Mark")
                                 .font(.system(size: get(type: "small"), weight: .regular))
                                 
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                         }
                         ProgressBarView(percentage: self.evaluation.application.percent)
                             .offset(x: 0, y: 6)
@@ -176,14 +176,14 @@ struct EvaluationView: View {
                                 
                                 Text((self.evaluation.other.weight > 0) ? String(format: "O/F (Weight: %.1f)", self.evaluation.other.weight) : "O/F (No Weight)")
                                     .font(.system(size: get(type: "small"), weight: .regular))
-                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .foregroundColor(Color("PrimaryTextColor"))
                                 Spacer()
                                 Text(!self.evaluation.other.score.isEmpty ? "(\(self.evaluation.other.score))" : "")
                                     .font(.system(size: get(type: "small"), weight: .regular))
-                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .foregroundColor(Color("PrimaryTextColor"))
                                 Text((self.evaluation.other.percent != -1) ? String(format: "%.1f%%", self.evaluation.other.percent) : "No Mark")
                                     .font(.system(size: get(type: "small"), weight: .regular))
-                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .foregroundColor(Color("PrimaryTextColor"))
                             }
                             ProgressBarView(percentage: self.evaluation.other.percent)
                                 .offset(x: 0, y: 6)
@@ -196,14 +196,14 @@ struct EvaluationView: View {
                                 
                                 Text((self.evaluation.finals.weight > 0) ? String(format: "O/F (Weight: %.1f)", self.evaluation.finals.weight) : "O/F (No Weight)")
                                     .font(.system(size: get(type: "small"), weight: .regular))
-                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .foregroundColor(Color("PrimaryTextColor"))
                                 Spacer()
                                 Text(!self.evaluation.finals.score.isEmpty ? "(\(self.evaluation.finals.score))" : "")
                                     .font(.system(size: get(type: "small"), weight: .regular))
-                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .foregroundColor(Color("PrimaryTextColor"))
                                 Text((self.evaluation.finals.percent != -1) ? String(format: "%.1f%%", self.evaluation.finals.percent) : "No Mark")
                                     .font(.system(size: get(type: "small"), weight: .regular))
-                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .foregroundColor(Color("PrimaryTextColor"))
                             }
                             ProgressBarView(percentage: self.evaluation.finals.percent)
                                 .offset(x: 0, y: 6)
@@ -214,7 +214,7 @@ struct EvaluationView: View {
                     if !evaluation.feedback.isEmpty {
                         Text(evaluation.feedback)
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .multilineTextAlignment(.leading)
                     }
                 }

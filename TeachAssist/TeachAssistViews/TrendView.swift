@@ -157,7 +157,7 @@ struct TrendView: View {
                     .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 3)
                 VStack (alignment: .leading) {
                     Text("Course Average")
-                        .foregroundColor(Color("SecondaryTextColor"))
+                        .foregroundColor(Color("PrimaryTextColor"))
                         .font(.system(size: get(type: "small"), weight: .semibold))
                         .padding(.leading, 25)
                         .padding(.top, 10)
@@ -176,7 +176,7 @@ struct TrendView: View {
                     .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 3)
                 VStack (alignment: .leading) {
                     Text("Knowledge")
-                        .foregroundColor(Color("SecondaryTextColor"))
+                        .foregroundColor(Color("PrimaryTextColor"))
                         .font(.system(size: get(type: "small"), weight: .semibold))
                         .padding(.leading, 25)
                         .padding(.top, 10)
@@ -195,7 +195,7 @@ struct TrendView: View {
                     .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 3)
                 VStack (alignment: .leading) {
                     Text("Thinking")
-                        .foregroundColor(Color("SecondaryTextColor"))
+                        .foregroundColor(Color("PrimaryTextColor"))
                         .font(.system(size: get(type: "small"), weight: .semibold))
                         .padding(.leading, 25)
                         .padding(.top, 10)
@@ -214,7 +214,7 @@ struct TrendView: View {
                     .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 3)
                 VStack (alignment: .leading) {
                     Text("Communication")
-                        .foregroundColor(Color("SecondaryTextColor"))
+                        .foregroundColor(Color("PrimaryTextColor"))
                         .font(.system(size: get(type: "small"), weight: .semibold))
                         .padding(.leading, 25)
                         .padding(.top, 10)
@@ -233,7 +233,7 @@ struct TrendView: View {
                     .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 3)
                 VStack (alignment: .leading) {
                     Text("Application")
-                        .foregroundColor(Color("SecondaryTextColor"))
+                        .foregroundColor(Color("PrimaryTextColor"))
                         .font(.system(size: get(type: "small"), weight: .semibold))
                         .padding(.leading, 25)
                         .padding(.top, 10)
@@ -289,11 +289,11 @@ struct LineChartSwiftUI: UIViewRepresentable {
         lineChart.xAxis.enabled = false
         lineChart.leftAxis.axisMinimum = 50
         lineChart.leftAxis.axisMaximum = 105
-        lineChart.leftAxis.gridColor = UIColor(named: "SecondaryTextColor")!
+        lineChart.leftAxis.gridColor = UIColor(named: "PrimaryTextColor")!
         lineChart.leftAxis.drawGridLinesEnabled = true
         lineChart.leftAxis.gridLineWidth = 0.1
-        lineChart.leftAxis.labelTextColor = UIColor(named: "SecondaryTextColor")!
-        lineChart.leftAxis.axisLineColor = UIColor(named: "SecondaryTextColor")!
+        lineChart.leftAxis.labelTextColor = UIColor(named: "PrimaryTextColor")!
+        lineChart.leftAxis.axisLineColor = UIColor(named: "PrimaryTextColor")!
         lineChart.rightAxis.enabled = false
         lineChart.legend.enabled = false
         lineChart.isUserInteractionEnabled = false

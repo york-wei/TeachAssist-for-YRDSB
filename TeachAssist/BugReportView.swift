@@ -49,7 +49,7 @@ struct BugReportView: View {
                             Spacer()
                             Text("Bug Report")
                                 .font(.system(size: get(type: "small"), weight: .regular))
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                             Spacer()
                         }
                         
@@ -67,7 +67,7 @@ struct BugReportView: View {
                                 TextField("Your Email", text: $email)
                                     .font(.system(size: get(type: "small"), weight: .regular))
                                     .multilineTextAlignment(.leading)
-                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .foregroundColor(Color("PrimaryTextColor"))
                                     .autocapitalization(.none)
                                     .padding()
                                     .disabled(self.successful)
@@ -87,7 +87,7 @@ struct BugReportView: View {
                                 TextField("Message", text: $message)
                                     .font(.system(size: get(type: "small"), weight: .regular))
                                     .multilineTextAlignment(.leading)
-                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .foregroundColor(Color("PrimaryTextColor"))
                                     .padding()
                                     .disabled(self.successful)
                             

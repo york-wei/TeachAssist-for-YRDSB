@@ -46,7 +46,7 @@ struct EditEvaluationView: View {
                 HStack {
                     Text(self.evaluation.name)
                         .font(.system(size: 24, weight: .semibold))
-                        .foregroundColor(Color("SecondaryTextColor"))
+                        .foregroundColor(Color("PrimaryTextColor"))
                     Spacer()
                     Button(action: {
                         
@@ -146,7 +146,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text("Knowledge/Understanding")
                             .font(.system(size: get(type: "small"), weight: .semibold))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(self.hasKnowledge ? 1 : 0.6)
                         Spacer()
                         Toggle("", isOn: self.$hasKnowledge).labelsHidden().onTapGesture {
@@ -159,7 +159,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text(hasKnowledge ? String(format: "Mark Percentage: %.1f%%", Double(self.kPercent)) : "Mark Percentage")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(self.hasKnowledge ? 1 : 0.6)
                         Spacer()
                     }
@@ -169,7 +169,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text(hasKnowledge ? String(format: "Weight: %.1f", Double(self.kWeight)) : "Weight")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(self.hasKnowledge ? 1 : 0.6)
                         Spacer()
                     }
@@ -184,7 +184,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text("Thinking")
                             .font(.system(size: get(type: "small"), weight: .semibold))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasThinking ? 1 : 0.6)
                         Spacer()
                         Toggle("", isOn: self.$hasThinking).labelsHidden().onTapGesture {
@@ -197,7 +197,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text(hasThinking ? String(format: "Mark Percentage: %.1f%%", Double(self.tPercent)) : "Mark Percentage")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasThinking ? 1 : 0.6)
                         Spacer()
                     }
@@ -207,7 +207,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text(hasThinking ? String(format: "Weight: %.1f", Double(self.tWeight)) : "Weight")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasThinking ? 1 : 0.6)
                         Spacer()
                     }
@@ -222,7 +222,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text("Communication")
                             .font(.system(size: get(type: "small"), weight: .semibold))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasCommunication ? 1 : 0.6)
                         Spacer()
                         Toggle("", isOn: self.$hasCommunication).labelsHidden().onTapGesture {
@@ -235,7 +235,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text(hasCommunication ? String(format: "Mark Percentage: %.1f%%", Double(self.cPercent)) : "Mark Percentage")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasCommunication ? 1 : 0.6)
                         Spacer()
                     }
@@ -245,7 +245,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text(hasCommunication ? String(format: "Weight: %.1f", Double(self.cWeight)) : "Weight")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasCommunication ? 1 : 0.6)
                         Spacer()
                     }
@@ -260,7 +260,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text("Application")
                             .font(.system(size: get(type: "small"), weight: .semibold))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasApplication ? 1 : 0.6)
                         Spacer()
                         Toggle("", isOn: self.$hasApplication).labelsHidden().onTapGesture {
@@ -273,7 +273,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text(hasApplication ? String(format: "Mark Percentage: %.1f%%", Double(self.aPercent)) : "Mark Percentage")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasApplication ? 1 : 0.6)
                         Spacer()
                     }
@@ -283,7 +283,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text(hasApplication ? String(format: "Weight: %.1f", Double(self.aWeight)) : "Weight")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasApplication ? 1 : 0.6)
                         Spacer()
                     }
@@ -298,7 +298,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text("Other")
                             .font(.system(size: get(type: "small"), weight: .semibold))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasOther ? 1 : 0.6)
                         Spacer()
                         Toggle("", isOn: self.$hasOther).labelsHidden().onTapGesture {
@@ -311,7 +311,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text(hasOther ? String(format: "Mark Percentage: %.1f%%", Double(self.oPercent)) : "Mark Percentage")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasOther ? 1 : 0.6)
                         Spacer()
                     }
@@ -321,7 +321,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text(hasOther ? String(format: "Weight: %.1f", Double(self.oWeight)) : "Weight")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasOther ? 1 : 0.6)
                         Spacer()
                     }
@@ -336,7 +336,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text("Final")
                             .font(.system(size: get(type: "small"), weight: .semibold))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasFinals ? 1 : 0.6)
                         Spacer()
                         Toggle("", isOn: self.$hasFinals).labelsHidden().onTapGesture {
@@ -349,7 +349,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text(hasFinals ? String(format: "Mark Percentage: %.1f%%", Double(self.fPercent)) : "Mark Percentage")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasFinals ? 1 : 0.6)
                         Spacer()
                     }
@@ -359,7 +359,7 @@ struct EditEvaluationView: View {
                     HStack {
                         Text(hasFinals ? String(format: "Weight: %.1f", Double(self.fWeight)) : "Weight")
                             .font(.system(size: get(type: "small"), weight: .regular))
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(Color("PrimaryTextColor"))
                             .opacity(hasFinals ? 1 : 0.6)
                         Spacer()
                     }

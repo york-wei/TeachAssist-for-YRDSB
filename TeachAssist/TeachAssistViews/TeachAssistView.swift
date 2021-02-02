@@ -92,7 +92,7 @@ struct TeachAssistView: View {
                                 
                                 Text("ID: " + self.userDataVM.studentID)
                                     .font(.system(size: get(type: "small"), weight: .regular))
-                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .foregroundColor(Color("PrimaryTextColor"))
                                 
                                 Spacer()
                                 Button(action: {
@@ -138,7 +138,7 @@ struct TeachAssistView: View {
                                 }
                                 Text("Term Average")
                                     .font(.system(size: get(type: "small"), weight: .regular))
-                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .foregroundColor(Color("PrimaryTextColor"))
                             }
                             
                             
@@ -189,19 +189,19 @@ struct TeachAssistView: View {
                             if self.userDataVM.isLoading {
                                 Text("No Courses Available")
                                     .font(.system(size: get(type: "small"), weight: .semibold))
-                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .foregroundColor(Color("PrimaryTextColor"))
                                     .redacted(reason: .placeholder)
                             }
                             else {
                                 Text("No Courses Available")
                                     .font(.system(size: get(type: "small"), weight: .semibold))
-                                    .foregroundColor(Color("SecondaryTextColor"))
+                                    .foregroundColor(Color("PrimaryTextColor"))
                             }
                         }
                         else {
                             Text("No Courses Available")
                                 .font(.system(size: get(type: "small"), weight: .semibold))
-                                .foregroundColor(Color("SecondaryTextColor"))
+                                .foregroundColor(Color("PrimaryTextColor"))
                         }
                         Spacer()
                     }
@@ -240,7 +240,7 @@ struct TeachAssistView: View {
                                             .foregroundColor(Color("IconColor"))
                                         Text("Theme:")
                                             .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("SecondaryTextColor"))
+                                            .foregroundColor(Color("PrimaryTextColor"))
                                         //Spacer()
                                         if self.userDataVM.theme == "light" {
                                             Text("Light")
@@ -284,7 +284,7 @@ struct TeachAssistView: View {
                                             .foregroundColor(Color("IconColor"))
                                         Text("TeachAssist Website")
                                             .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("SecondaryTextColor"))
+                                            .foregroundColor(Color("PrimaryTextColor"))
                                         Spacer()
                                     }
                                     .padding(.top, get(type: "menuButton"))
@@ -318,7 +318,7 @@ struct TeachAssistView: View {
                                             .padding(.trailing, 10)
                                         Text("My Blueprint")
                                             .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("SecondaryTextColor"))
+                                            .foregroundColor(Color("PrimaryTextColor"))
                                         Spacer()
                                     }
                                     .padding(.top, get(type: "menuButton"))
@@ -354,7 +354,7 @@ struct TeachAssistView: View {
                                         
                                         Text("Moodle")
                                             .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("SecondaryTextColor"))
+                                            .foregroundColor(Color("PrimaryTextColor"))
                                         Spacer()
                                     }
                                     .padding(.top, get(type: "menuButton"))
@@ -388,7 +388,7 @@ struct TeachAssistView: View {
                                         
                                         Text("YRDSB Twitter")
                                             .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("SecondaryTextColor"))
+                                            .foregroundColor(Color("PrimaryTextColor"))
                                         Spacer()
                                     }
                                     .padding(.top, get(type: "menuButton"))
@@ -423,7 +423,7 @@ struct TeachAssistView: View {
                                         
                                         Text("Rate This App")
                                             .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("SecondaryTextColor"))
+                                            .foregroundColor(Color("PrimaryTextColor"))
                                         Spacer()
                                     }
                                     .padding(.top, get(type: "menuButton"))
@@ -446,7 +446,7 @@ struct TeachAssistView: View {
                                         
                                         Text("Report A Bug")
                                             .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("SecondaryTextColor"))
+                                            .foregroundColor(Color("PrimaryTextColor"))
                                         Spacer()
                                     }
                                     .padding(.top, get(type: "menuButton"))
@@ -472,7 +472,7 @@ struct TeachAssistView: View {
                                         
                                         Text("Log Out")
                                             .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("SecondaryTextColor"))
+                                            .foregroundColor(Color("PrimaryTextColor"))
                                         Spacer()
                                     }
                                     .padding(.top, get(type: "menuButton"))
@@ -517,10 +517,10 @@ struct TeachAssistView: View {
                             
                             Text("Version " + self.version)
                                 .font(.system(size: 9, weight: .regular))
-                                .foregroundColor(Color("PrimaryTextColor"))
+                                .foregroundColor(Color(""))
                             Text("© 2020 York Wei")
                                 .font(.system(size: 9, weight: .regular))
-                                .foregroundColor(Color("PrimaryTextColor"))
+                                .foregroundColor(Color(""))
                             
                         }
                         .padding(.leading, 30)

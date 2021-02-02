@@ -52,7 +52,7 @@ struct RingView: View {
             
              Text(String(format: "%.1f%%", self.percentage))
                 .font(.system(size: 24, weight: .semibold))
-                .foregroundColor(Color("SecondaryTextColor"))
+                .foregroundColor(Color("PrimaryTextColor"))
         }
     }
 }
