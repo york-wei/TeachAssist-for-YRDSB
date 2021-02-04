@@ -12,7 +12,10 @@ struct LoginView: View {
     
     @State var studentID = ""
     @State var studentPW = ""
+    
+    @State var fadeIn = true
     @State var buttonTapped = false
+    
     @EnvironmentObject var userDataVM: UserDataViewModel
     
     var body: some View {
@@ -147,6 +150,15 @@ struct LoginView: View {
         .padding(.trailing, 30)
         .padding(.leading, 30)
         .padding(.bottom, 70)
+        .onAppear() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                withAnimation(Animation.easeInOut(duration: 0.3)) {
+                    fadeIn = false
+                }
+            }
+        }
+        .opacity(fadeIn ? 0 : 1)
+        .offset(x: 0, y: fadeIn ? 10 : 0)
         
     }
     

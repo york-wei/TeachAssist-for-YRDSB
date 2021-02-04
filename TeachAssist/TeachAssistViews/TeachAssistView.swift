@@ -517,10 +517,10 @@ struct TeachAssistView: View {
                             
                             Text("Version " + self.version)
                                 .font(.system(size: 9, weight: .regular))
-                                .foregroundColor(Color(""))
-                            Text("© 2020 York Wei")
+                                .foregroundColor(Color("PrimaryTextColor"))
+                            Text("© 2021 York Wei")
                                 .font(.system(size: 9, weight: .regular))
-                                .foregroundColor(Color(""))
+                                .foregroundColor(Color("PrimaryTextColor"))
                             
                         }
                         .padding(.leading, 30)
@@ -571,7 +571,7 @@ public func get(type: String) -> CGFloat {
     var regularFont = 15.0
     var smallFont = 13.0
     var tabHeight = 55.0
-    var loginTopPadding = 70.0
+    var loginTopPadding = 90.0
     var menuTopBottomPadding = 50.0
     var menuButtonPadding = 20.0
     //var scrollPadding = 75.0
@@ -594,7 +594,7 @@ public func get(type: String) -> CGFloat {
     case .iPhoneX, .iPhone11Pro, .iPhoneXS, .iPhone12Pro: topPadding = 60.0; sidePadding = 39.0; cellHeight = 105.0; titleFont = 32.0; regularFont = 14.0; smallFont = 11.5; tabHeight = 80.0; loginTopPadding = 130.0
         
     //    iPhone 11ProMax/XSMax
-    case .iPhone11ProMax, .iPhoneXSMax, .iPhone12ProMax: topPadding = 70.0; cellHeight = 110.0; tabHeight = 80.0; loginTopPadding = 130.0; menuButtonPadding = 25.0
+    case .iPhone11ProMax, .iPhoneXSMax, .iPhone12ProMax: topPadding = 70.0; cellHeight = 110.0; tabHeight = 80.0; loginTopPadding = 200; menuButtonPadding = 25.0
         
     //    iPhone 6S/7/8 Plus
     default: break

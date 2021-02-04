@@ -19,6 +19,12 @@ struct ContentView: View {
         
         ZStack {
             
+            if self.launch {
+                LaunchView(hideLogo: self.$hideLogo)
+                    .transition(.opacity)
+                    .zIndex(3)
+            }
+            
             if self.userDataVM.isLoggedIn {
                 
                 ZStack(alignment: .bottom) {
@@ -75,7 +81,7 @@ struct ContentView: View {
 
             }
             
-            if !self.userDataVM.isLoggedIn {
+            else if !self.userDataVM.isLoggedIn && !self.launch {
                 
                 LoginView().environmentObject(self.userDataVM)
                     .transition(.opacity)
@@ -83,11 +89,11 @@ struct ContentView: View {
                 
             }
             
-            if self.launch {
-                LaunchView(hideLogo: self.$hideLogo)
-                    .transition(.opacity)
-                    .zIndex(3)
-            }
+//            if self.launch {
+//                LaunchView(hideLogo: self.$hideLogo)
+//                    .transition(.opacity)
+//                    .zIndex(3)
+//            }
             
         }
         .edgesIgnoringSafeArea(.all)
