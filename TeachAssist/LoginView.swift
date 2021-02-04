@@ -10,9 +10,11 @@ import SwiftUI
 
 struct LoginView: View {
     
+    // Textfield Input
     @State var studentID = ""
     @State var studentPW = ""
     
+    // Animations
     @State var fadeIn = true
     @State var buttonTapped = false
     
@@ -152,13 +154,13 @@ struct LoginView: View {
         .padding(.bottom, 70)
         .onAppear() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                withAnimation(Animation.easeInOut(duration: 0.3)) {
+                withAnimation(Animation.spring()) {
                     fadeIn = false
                 }
             }
         }
         .opacity(fadeIn ? 0 : 1)
-        .offset(x: 0, y: fadeIn ? 10 : 0)
+        .offset(x: 0, y: fadeIn ? 50 : 0)
         
     }
     
