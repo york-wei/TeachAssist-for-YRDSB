@@ -21,8 +21,16 @@ struct ContentView: View {
             
             if self.launch {
                 LaunchView(hideLogo: self.$hideLogo)
-                    .transition(.opacity)
+                    .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.3)))
                     .zIndex(3)
+            }
+            
+            if !self.userDataVM.isLoggedIn && !self.launch {
+                
+                LoginView().environmentObject(self.userDataVM)
+                    .transition(AnyTransition.opacity)
+                    .zIndex(2)
+                
             }
             
             if self.userDataVM.isLoggedIn {
@@ -30,7 +38,7 @@ struct ContentView: View {
                 ZStack(alignment: .bottom) {
                 
                     TeachAssistView().environmentObject(self.userDataVM)
-                        .transition(.opacity)
+                        .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.3)))
                         .zIndex(1)
                                         
                     if self.userDataVM.showMessage {
@@ -76,24 +84,10 @@ struct ContentView: View {
                     }
                     
                 }
-                .transition(.opacity)
+                .transition(AnyTransition.opacity.animation(.easeIn(duration: 0.3)))
                 .zIndex(1)
 
             }
-            
-            else if !self.userDataVM.isLoggedIn && !self.launch {
-                
-                LoginView().environmentObject(self.userDataVM)
-                    .transition(.opacity)
-                    .zIndex(2)
-                
-            }
-            
-//            if self.launch {
-//                LaunchView(hideLogo: self.$hideLogo)
-//                    .transition(.opacity)
-//                    .zIndex(3)
-//            }
             
         }
         .edgesIgnoringSafeArea(.all)

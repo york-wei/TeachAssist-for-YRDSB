@@ -159,6 +159,13 @@ struct LoginView: View {
                 }
             }
         }
+        .onDisappear() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                withAnimation(Animation.spring()) {
+                    fadeIn = true
+                }
+            }
+        }
         .opacity(fadeIn ? 0 : 1)
         .offset(x: 0, y: fadeIn ? 50 : 0)
         
