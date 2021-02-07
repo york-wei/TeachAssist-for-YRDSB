@@ -49,7 +49,7 @@ struct ProgressBarView: View {
                 
                 //Background
                 Capsule()
-                    .foregroundColor(Color("RingBackgroundColor"))
+                    .foregroundColor(Color("ProgressBarBackgroundColor"))
                     .frame(height: 5)
                 
                 //Progress

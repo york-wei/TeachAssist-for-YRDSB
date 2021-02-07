@@ -144,8 +144,8 @@ struct TeachAssistView: View {
                             
                         }
                         .padding(.top, get(type: "top"))
-                        .padding(.leading, get(type: "side"))
-                        .padding(.trailing, get(type: "side"))
+                        .padding(.leading, 30)
+                        .padding(.trailing, 30)
                         .padding(.bottom, 30)
                         
 
@@ -180,7 +180,7 @@ struct TeachAssistView: View {
                     }
                     
                 }
-                .background(Color("BackgroundColor"))
+                //.background(Color("BackgroundColor"))
             
                 if self.userDataVM.courses.count == 0 {
                     VStack {
