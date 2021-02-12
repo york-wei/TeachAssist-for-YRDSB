@@ -38,6 +38,8 @@ struct TeachAssistView: View {
     
     @State var type = ""
     
+    @State var animateProgress = false
+    
     @State var version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     
     var body: some View {
@@ -79,65 +81,68 @@ struct TeachAssistView: View {
                                         self.menu.toggle()
                                     }
                                 }) {
-                                    Image(systemName: "line.horizontal.3")
-                                        .font(.system(size: 15, weight: .semibold))
-                                        .foregroundColor(Color("IconColor"))
+                                    Image(systemName: "person.crop.circle")
+                                        .font(.title)
+                                        .foregroundColor(Color("PrimaryTextColor"))
                                 }
-                                .frame(width: 44, height: 44)
-                                .background(Color("CellColor"))
-                                .clipShape(Circle())
-                                .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 2)
+//                                .frame(width: 44, height: 44)
+//                                .background(Color("CellColor"))
+//                                .clipShape(Circle())
+//                                .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 2)
                                 
                                 Spacer()
                                 
-                                Text("ID: " + self.userDataVM.studentID)
-                                    .font(.system(size: get(type: "small"), weight: .regular))
+                                Text(self.userDataVM.studentID)
+                                    .font(.footnote)
+                                    .fontWeight(.regular)
                                     .foregroundColor(Color("PrimaryTextColor"))
                                 
                                 Spacer()
-                                Button(action: {
-                                    self.userDataVM.isLoading = true
-                                    self.userDataVM.load(launch: false)
-                                }) {
-                                    if self.userDataVM.isLoading {
-                                        ActivityIndicator(isAnimating: true)
-                                    }
-                                    else {
-                                        Image(systemName: "arrow.clockwise")
-                                            .font(.system(size: 15, weight: .semibold))
-                                            .foregroundColor(Color("IconColor"))
-                                            .offset(x: 0, y: -2)
-                                            .rotationEffect(Angle(degrees: 45))
-                                    }
-                                }
-                                .frame(width: 44, height: 44)
-                                .background(Color("CellColor"))
-                                .clipShape(Circle())
-                                .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 2)
-                                .disabled(self.userDataVM.isLoading)
+//                                Button(action: {
+//                                    self.userDataVM.isLoading = true
+//                                    self.userDataVM.load(launch: false)
+//                                }) {
+//                                    if self.userDataVM.isLoading {
+//                                        ActivityIndicator(isAnimating: true)
+//                                    }
+//                                    else {
+//                                        Image(systemName: "arrow.clockwise")
+//                                            .font(.system(size: 15, weight: .semibold))
+//                                            .foregroundColor(Color("IconColor"))
+//                                            .offset(x: 0, y: -2)
+//                                            .rotationEffect(Angle(degrees: 45))
+//                                    }
+//                                }
+//                                .frame(width: 44, height: 44)
+//                                .background(Color("CellColor"))
+//                                .clipShape(Circle())
+//                                .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 2)
+//                                .disabled(self.userDataVM.isLoading)
                             }
                             
                             //SHOW OVERALL AVERAGE RING THERE ARE MARKS AVAILABLE
                             if self.userDataVM.overallAverage >= 0 {
                                 if #available(iOS 14.0, *) {
                                     if self.userDataVM.isLoading {
-                                        RingView(percentage: self.userDataVM.overallAverage, redacted: true)
+                                        RingView(percentage: self.userDataVM.overallAverage, redacted: true, animate: self.$animateProgress)
                                             .padding(.top, 20)
-                                            .padding(.bottom, 15)
+                                            .padding(.bottom, 20)
                                             .redacted(reason: .placeholder)
                                     }
                                     else {
-                                        RingView(percentage: self.userDataVM.overallAverage, redacted: false)
+                                        RingView(percentage: self.userDataVM.overallAverage, redacted: false, animate: self.$animateProgress)
                                             .padding(.top, 20)
-                                            .padding(.bottom, 15)
+                                            .padding(.bottom, 20)
+                                            .animation(Animation.easeInOut(duration: 0.6).delay(0.3))
                                     }
                                 } else {
-                                    RingView(percentage: self.userDataVM.overallAverage, redacted: false)
+                                    RingView(percentage: self.userDataVM.overallAverage, redacted: false, animate: self.$animateProgress)
                                         .padding(.top, 20)
-                                        .padding(.bottom, 15)
+                                        .padding(.bottom, 20)
                                 }
                                 Text("Term Average")
-                                    .font(.system(size: get(type: "small"), weight: .regular))
+                                    .font(.footnote)
+                                    .fontWeight(.regular)
                                     .foregroundColor(Color("PrimaryTextColor"))
                             }
                             
@@ -555,6 +560,8 @@ struct TeachAssistView: View {
             if remoteConfig.configValue(forKey: "ask_for_rating").boolValue {
                 SKStoreReviewController.requestReview()
             }
+            
+            self.animateProgress = true
         
         }
         

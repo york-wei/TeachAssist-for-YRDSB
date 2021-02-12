@@ -33,7 +33,7 @@ struct ContentView: View {
                 
             }
             
-            if self.userDataVM.isLoggedIn {
+            if self.userDataVM.isLoggedIn && !self.launch {
                 
                 ZStack(alignment: .bottom) {
                 

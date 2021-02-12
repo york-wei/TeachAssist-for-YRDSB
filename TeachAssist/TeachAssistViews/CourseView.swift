@@ -21,6 +21,8 @@ struct CourseView: View {
     
     @State var add = false
     
+    @State var animateProgress = false
+    
     var body: some View {
         
         ZStack {
@@ -102,7 +104,7 @@ struct CourseView: View {
                             HStack {
                                 Spacer()
                             }
-                            RingView(percentage: !editing ? self.userDataVM.courses[courseIndex].parsedAverage : self.userDataVM.editCourse.parsedAverage, redacted: false)
+                            RingView(percentage: !editing ? self.userDataVM.courses[courseIndex].parsedAverage : self.userDataVM.editCourse.parsedAverage, redacted: false, animate: self.$animateProgress)
                             .padding(.top, 20)
                             .padding(.bottom, 15)
                             Text(!editing ? "Course Average" : "Predicted Course Average")
