@@ -124,19 +124,18 @@ struct TeachAssistView: View {
                             if self.userDataVM.overallAverage >= 0 {
                                 if #available(iOS 14.0, *) {
                                     if self.userDataVM.isLoading {
-                                        RingView(percentage: self.userDataVM.overallAverage, redacted: true, animate: self.$animateProgress)
+                                        RingView(percentage: self.userDataVM.overallAverage, redacted: true)
                                             .padding(.top, 20)
                                             .padding(.bottom, 20)
                                             .redacted(reason: .placeholder)
                                     }
                                     else {
-                                        RingView(percentage: self.userDataVM.overallAverage, redacted: false, animate: self.$animateProgress)
+                                        RingView(percentage: self.userDataVM.overallAverage, redacted: false)
                                             .padding(.top, 20)
                                             .padding(.bottom, 20)
-                                            .animation(Animation.easeInOut(duration: 0.6).delay(0.3))
                                     }
                                 } else {
-                                    RingView(percentage: self.userDataVM.overallAverage, redacted: false, animate: self.$animateProgress)
+                                    RingView(percentage: self.userDataVM.overallAverage, redacted: false)
                                         .padding(.top, 20)
                                         .padding(.bottom, 20)
                                 }

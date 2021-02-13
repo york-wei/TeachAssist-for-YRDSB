@@ -12,7 +12,7 @@ struct RingView: View {
     
     let percentage : Double
     @State var redacted : Bool
-    @Binding var animate : Bool
+    @State var animate = false
 
     var body: some View {
                 
@@ -39,6 +39,10 @@ struct RingView: View {
                         .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0))
                         .frame(width: 130, height: 130)
                         .shadow(color: Color("RingDropShadowColor"), radius: 3, x: 0, y: 3)
+                        .animation(Animation.easeInOut(duration: 0.6).delay(0.3))
+                        .onAppear {
+                            self.animate = true
+                        }
                     //.animation(.easeInOut)
                 }
             }
@@ -61,6 +65,6 @@ struct RingView: View {
 
 struct RingView_Previews: PreviewProvider {
     static var previews: some View {
-        RingView(percentage: 80, redacted: false, animate: .constant(true))
+        RingView(percentage: 80, redacted: false)
     }
 }
