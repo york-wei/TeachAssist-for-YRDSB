@@ -25,7 +25,7 @@ struct ContentView: View {
                     .zIndex(3)
             }
             
-            if !self.userDataVM.isLoggedIn && !self.launch {
+            else if !self.userDataVM.isLoggedIn {
                 
                 LoginView().environmentObject(self.userDataVM)
                     .transition(AnyTransition.opacity)
@@ -33,7 +33,7 @@ struct ContentView: View {
                 
             }
             
-            if self.userDataVM.isLoggedIn && !self.launch {
+            else {
                 
                 ZStack(alignment: .bottom) {
                 
