@@ -54,125 +54,111 @@ struct TeachAssistView: View {
         }
         
         return ZStack {
-            
-            if self.opened {
-                CourseView(opened: self.$opened, courseIndex: self.index).environmentObject(self.userDataVM)
-                    .transition(.move(edge: .trailing))
-            }
-            else {
                 
-                ScrollView(showsIndicators: false) {
+            ScrollView(showsIndicators: false) {
+
+                VStack(alignment: .leading) {
                     
-                    VStack(alignment: .leading) {
+                    VStack {
                         
-                        VStack {
+                        HStack {
                             
-                            HStack {
-                                
-                                Spacer()
-                                
-                            }
+                            Spacer()
                             
-                            //MENU BUTTON, STUDENT ID, REFRESH BUTTON
-                            HStack {
-                                
-                                Button(action: {
-                                    withAnimation() {
-                                        self.menu.toggle()
-                                    }
-                                }) {
-                                    Image(systemName: "person.crop.circle")
-                                        .font(.title)
-                                        .foregroundColor(Color("PrimaryTextColor"))
+                        }
+                        
+                        //MENU BUTTON, STUDENT ID, REFRESH BUTTON
+                        HStack {
+                            
+                            Button(action: {
+                                withAnimation() {
+                                    self.menu.toggle()
                                 }
-//                                .frame(width: 44, height: 44)
-//                                .background(Color("CellColor"))
-//                                .clipShape(Circle())
-//                                .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 2)
-                                
-                                Spacer()
-                                
-                                Text(self.userDataVM.studentID)
-                                    .font(.footnote)
-                                    .fontWeight(.regular)
+                            }) {
+                                Image(systemName: "person.crop.circle")
+                                    .font(.title)
                                     .foregroundColor(Color("PrimaryTextColor"))
-                                
-                                Spacer()
-//                                Button(action: {
-//                                    self.userDataVM.isLoading = true
-//                                    self.userDataVM.load(launch: false)
-//                                }) {
-//                                    if self.userDataVM.isLoading {
-//                                        ActivityIndicator(isAnimating: true)
-//                                    }
-//                                    else {
-//                                        Image(systemName: "arrow.clockwise")
-//                                            .font(.system(size: 15, weight: .semibold))
-//                                            .foregroundColor(Color("IconColor"))
-//                                            .offset(x: 0, y: -2)
-//                                            .rotationEffect(Angle(degrees: 45))
-//                                    }
-//                                }
-//                                .frame(width: 44, height: 44)
-//                                .background(Color("CellColor"))
-//                                .clipShape(Circle())
-//                                .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 2)
-//                                .disabled(self.userDataVM.isLoading)
                             }
+                            //                                .frame(width: 44, height: 44)
+                            //                                .background(Color("CellColor"))
+                            //                                .clipShape(Circle())
+                            //                                .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 2)
                             
-                            //SHOW OVERALL AVERAGE RING THERE ARE MARKS AVAILABLE
-                            if self.userDataVM.overallAverage >= 0 {
-                                if #available(iOS 14.0, *) {
-                                    if self.userDataVM.isLoading {
-                                        RingView(percentage: self.userDataVM.overallAverage, redacted: true)
-                                            .padding(.top, 20)
-                                            .padding(.bottom, 20)
-                                            .redacted(reason: .placeholder)
-                                    }
-                                    else {
-                                        RingView(percentage: self.userDataVM.overallAverage, redacted: false)
-                                            .padding(.top, 20)
-                                            .padding(.bottom, 20)
-                                    }
-                                } else {
+                            Spacer()
+                            
+                            Text(self.userDataVM.studentID)
+                                .font(.footnote)
+                                .fontWeight(.regular)
+                                .foregroundColor(Color("PrimaryTextColor"))
+                            
+                            Spacer()
+                            //                                Button(action: {
+                            //                                    self.userDataVM.isLoading = true
+                            //                                    self.userDataVM.load(launch: false)
+                            //                                }) {
+                            //                                    if self.userDataVM.isLoading {
+                            //                                        ActivityIndicator(isAnimating: true)
+                            //                                    }
+                            //                                    else {
+                            //                                        Image(systemName: "arrow.clockwise")
+                            //                                            .font(.system(size: 15, weight: .semibold))
+                            //                                            .foregroundColor(Color("IconColor"))
+                            //                                            .offset(x: 0, y: -2)
+                            //                                            .rotationEffect(Angle(degrees: 45))
+                            //                                    }
+                            //                                }
+                            //                                .frame(width: 44, height: 44)
+                            //                                .background(Color("CellColor"))
+                            //                                .clipShape(Circle())
+                            //                                .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 2)
+                            //                                .disabled(self.userDataVM.isLoading)
+                        }
+                        
+                        //SHOW OVERALL AVERAGE RING THERE ARE MARKS AVAILABLE
+                        if self.userDataVM.overallAverage >= 0 {
+                            if #available(iOS 14.0, *) {
+                                if self.userDataVM.isLoading {
+                                    RingView(percentage: self.userDataVM.overallAverage, redacted: true)
+                                        .padding(.top, 20)
+                                        .padding(.bottom, 20)
+                                        .redacted(reason: .placeholder)
+                                }
+                                else {
                                     RingView(percentage: self.userDataVM.overallAverage, redacted: false)
                                         .padding(.top, 20)
                                         .padding(.bottom, 20)
                                 }
-                                Text("Term Average")
-                                    .font(.footnote)
-                                    .fontWeight(.regular)
-                                    .foregroundColor(Color("PrimaryTextColor"))
+                            } else {
+                                RingView(percentage: self.userDataVM.overallAverage, redacted: false)
+                                    .padding(.top, 20)
+                                    .padding(.bottom, 20)
                             }
-                            
-                            
+                            Text("Term Average")
+                                .font(.footnote)
+                                .fontWeight(.regular)
+                                .foregroundColor(Color("PrimaryTextColor"))
                         }
-                        .padding(.top, get(type: "top"))
-                        .padding(.leading, 30)
-                        .padding(.trailing, 30)
-                        .padding(.bottom, 30)
                         
-
-                        if #available(iOS 14.0, *) {
-                            if self.userDataVM.isLoading {
-                                VStack (spacing: 20) {
-                                    ForEach(self.userDataVM.courses) { course in
-                                        CourseCellView(opened: self.$opened, index: self.$index, course: course, redacted: self.userDataVM.isLoading).environmentObject(self.userDataVM)
-                                    }
+                        
+                    }
+                    .padding(.top, get(type: "top"))
+                    .padding(.leading, 30)
+                    .padding(.trailing, 30)
+                    .padding(.bottom, 30)
+                    
+                    
+                    if #available(iOS 14.0, *) {
+                        if self.userDataVM.isLoading {
+                            VStack (spacing: 20) {
+                                ForEach(self.userDataVM.courses) { course in
+                                    CourseCellView(opened: self.$opened, index: self.$index, course: course, redacted: self.userDataVM.isLoading).environmentObject(self.userDataVM)
                                 }
-                                .padding(.bottom, 75)
-                                .redacted(reason: .placeholder)
-                                .disabled(true)
                             }
-                            else {
-                                VStack (spacing: 20) {
-                                    ForEach(self.userDataVM.courses) { course in
-                                        CourseCellView(opened: self.$opened, index: self.$index, course: course, redacted: self.userDataVM.isLoading).environmentObject(self.userDataVM)
-                                    }
-                                }
-                                .padding(.bottom, 75)
-                            }
-                        } else {
+                            .padding(.bottom, 75)
+                            .redacted(reason: .placeholder)
+                            .disabled(true)
+                        }
+                        else {
                             VStack (spacing: 20) {
                                 ForEach(self.userDataVM.courses) { course in
                                     CourseCellView(opened: self.$opened, index: self.$index, course: course, redacted: self.userDataVM.isLoading).environmentObject(self.userDataVM)
@@ -180,369 +166,382 @@ struct TeachAssistView: View {
                             }
                             .padding(.bottom, 75)
                         }
-                        
+                    } else {
+                        VStack (spacing: 20) {
+                            ForEach(self.userDataVM.courses) { course in
+                                CourseCellView(opened: self.$opened, index: self.$index, course: course, redacted: self.userDataVM.isLoading).environmentObject(self.userDataVM)
+                            }
+                        }
+                        .padding(.bottom, 75)
                     }
                     
                 }
-                //.background(Color("BackgroundColor"))
+                
+            }
+            //.background(Color("BackgroundColor"))
             
-                if self.userDataVM.courses.count == 0 {
-                    VStack {
-                        Spacer()
-                        if #available(iOS 14.0, *) {
-                            if self.userDataVM.isLoading {
-                                Text("No Courses Available")
-                                    .font(.system(size: get(type: "small"), weight: .semibold))
-                                    .foregroundColor(Color("PrimaryTextColor"))
-                                    .redacted(reason: .placeholder)
-                            }
-                            else {
-                                Text("No Courses Available")
-                                    .font(.system(size: get(type: "small"), weight: .semibold))
-                                    .foregroundColor(Color("PrimaryTextColor"))
-                            }
+            if self.userDataVM.courses.count == 0 {
+                VStack {
+                    Spacer()
+                    if #available(iOS 14.0, *) {
+                        if self.userDataVM.isLoading {
+                            Text("No Courses Available")
+                                .font(.system(size: get(type: "small"), weight: .semibold))
+                                .foregroundColor(Color("PrimaryTextColor"))
+                                .redacted(reason: .placeholder)
                         }
                         else {
                             Text("No Courses Available")
                                 .font(.system(size: get(type: "small"), weight: .semibold))
                                 .foregroundColor(Color("PrimaryTextColor"))
                         }
-                        Spacer()
                     }
+                    else {
+                        Text("No Courses Available")
+                            .font(.system(size: get(type: "small"), weight: .semibold))
+                            .foregroundColor(Color("PrimaryTextColor"))
+                    }
+                    Spacer()
+                }
+            }
+            
+            //MENU
+            ZStack {
+                
+                if self.menu {
+                    BlurView(style: .systemUltraThinMaterial)
+                        .edgesIgnoringSafeArea(.all)
+                        .transition(.opacity)
+                        .onTapGesture {
+                            withAnimation {
+                                self.menu.toggle()
+                            }
+                        }
+                    //.opacity(0.9)
                 }
                 
-                //MENU
-                ZStack {
-                    
-                    if self.menu {
-                        BlurView(style: .systemUltraThinMaterial)
-                            .edgesIgnoringSafeArea(.all)
-                            .transition(.opacity)
-                            .onTapGesture {
-                                withAnimation {
-                                    self.menu.toggle()
-                                }
+                HStack {
+                    VStack(alignment: .leading) {
+                        
+                        HStack {
+                            Spacer()
                         }
-                        //.opacity(0.9)
-                    }
-                    
-                    HStack {
-                        VStack(alignment: .leading) {
+                        
+                        VStack {
                             
-                            HStack {
-                                Spacer()
+                            VStack (alignment: .leading){//Theme setting
+                                HStack {
+                                    Image(systemName: "circle.lefthalf.fill")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 10)
+                                        .foregroundColor(Color("IconColor"))
+                                    Text("Theme:")
+                                        .font(.system(size: get(type: "small"), weight: .regular))
+                                        .foregroundColor(Color("PrimaryTextColor"))
+                                    //Spacer()
+                                    if self.userDataVM.theme == "light" {
+                                        Text("Light")
+                                            .font(.system(size: get(type: "small"), weight: .semibold))
+                                            .foregroundColor(Color("IconColor"))
+                                    }
+                                    else if self.userDataVM.theme == "dark" {
+                                        Text("Dark")
+                                            .font(.system(size: get(type: "small"), weight: .semibold))
+                                            .foregroundColor(Color("IconColor"))
+                                    }
+                                    else if self.userDataVM.theme == "system" {
+                                        Text("System")
+                                            .font(.system(size: get(type: "small"), weight: .semibold))
+                                            .foregroundColor(Color("IconColor"))
+                                    }
+                                }
+                                .padding(.top, get(type: "menuButton"))
+                                .padding(.bottom, get(type: "menuButton"))
+                                .onTapGesture {
+                                    if self.userDataVM.theme == "system" {
+                                        self.userDataVM.theme = "dark"
+                                    }
+                                    else if self.userDataVM.theme == "dark" {
+                                        self.userDataVM.theme = "light"
+                                    }
+                                    else if self.userDataVM.theme == "light" {
+                                        self.userDataVM.theme = "system"
+                                    }
+                                }
+                                Divider()
                             }
                             
-                            VStack {
-                                
-                                VStack (alignment: .leading){//Theme setting
-                                    HStack {
-                                        Image(systemName: "circle.lefthalf.fill")
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
-                                            .padding(.trailing, 10)
-                                            .foregroundColor(Color("IconColor"))
-                                        Text("Theme:")
-                                            .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("PrimaryTextColor"))
-                                        //Spacer()
-                                        if self.userDataVM.theme == "light" {
-                                            Text("Light")
-                                                .font(.system(size: get(type: "small"), weight: .semibold))
-                                                .foregroundColor(Color("IconColor"))
-                                        }
-                                        else if self.userDataVM.theme == "dark" {
-                                            Text("Dark")
-                                                .font(.system(size: get(type: "small"), weight: .semibold))
-                                                .foregroundColor(Color("IconColor"))
-                                        }
-                                        else if self.userDataVM.theme == "system" {
-                                            Text("System")
-                                                .font(.system(size: get(type: "small"), weight: .semibold))
-                                                .foregroundColor(Color("IconColor"))
-                                        }
-                                    }
-                                    .padding(.top, get(type: "menuButton"))
-                                    .padding(.bottom, get(type: "menuButton"))
-                                    .onTapGesture {
-                                        if self.userDataVM.theme == "system" {
-                                            self.userDataVM.theme = "dark"
-                                        }
-                                        else if self.userDataVM.theme == "dark" {
-                                            self.userDataVM.theme = "light"
-                                        }
-                                        else if self.userDataVM.theme == "light" {
-                                            self.userDataVM.theme = "system"
-                                        }
-                                    }
-                                    Divider()
+                            VStack (alignment: .leading) {
+                                //Teachassist website
+                                HStack {
+                                    Image(systemName: "cloud.fill")
+                                        .resizable()
+                                        .frame(width: 20, height: 15)
+                                        .padding(.trailing, 10)
+                                        .foregroundColor(Color("IconColor"))
+                                    Text("TeachAssist Website")
+                                        .font(.system(size: get(type: "small"), weight: .regular))
+                                        .foregroundColor(Color("PrimaryTextColor"))
+                                    Spacer()
                                 }
-                                
-                                VStack (alignment: .leading) {
-                                    //Teachassist website
-                                    HStack {
-                                        Image(systemName: "cloud.fill")
-                                            .resizable()
-                                            .frame(width: 20, height: 15)
-                                            .padding(.trailing, 10)
-                                            .foregroundColor(Color("IconColor"))
-                                        Text("TeachAssist Website")
-                                            .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("PrimaryTextColor"))
-                                        Spacer()
-                                    }
-                                    .padding(.top, get(type: "menuButton"))
-                                    .padding(.bottom, get(type: "menuButton"))
-                                    .onTapGesture {
-                                        if self.userDataVM.studentID != "demo" {
-                                            self.url = "https://ta.yrdsb.ca/live/m/index.php?error_message=0"
-                                            self.userDataVM.url = "https://ta.yrdsb.ca/live/m/index.php?error_message=0"
-                                            self.type = "web"
-                                            withAnimation {
-                                                self.showWeb = true
-                                                self.showSheet = true
-                                            }
-                                        }
-                                        else {
-                                            if let url = URL(string: "https://ta.yrdsb.ca/live/m/index.php?error_message=0") {
-                                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                                            }
+                                .padding(.top, get(type: "menuButton"))
+                                .padding(.bottom, get(type: "menuButton"))
+                                .onTapGesture {
+                                    if self.userDataVM.studentID != "demo" {
+                                        self.url = "https://ta.yrdsb.ca/live/m/index.php?error_message=0"
+                                        self.userDataVM.url = "https://ta.yrdsb.ca/live/m/index.php?error_message=0"
+                                        self.type = "web"
+                                        withAnimation {
+                                            self.showWeb = true
+                                            self.showSheet = true
                                         }
                                     }
-                                    Divider()
-                                }
-                                
-                                VStack (alignment: .leading) {
-                                    //My blueprint
-                                    HStack {
-                                        Image(systemName: "m.circle.fill")
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
-                                            .foregroundColor(Color("IconColor"))
-                                            .padding(.trailing, 10)
-                                        Text("My Blueprint")
-                                            .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("PrimaryTextColor"))
-                                        Spacer()
-                                    }
-                                    .padding(.top, get(type: "menuButton"))
-                                    .padding(.bottom, get(type: "menuButton"))
-                                    .onTapGesture {
-                                        if self.userDataVM.studentID != "demo" {
-                                            self.url = "https://mypathwayplanner.yrdsb.ca/"
-                                            self.userDataVM.url = "https://mypathwayplanner.yrdsb.ca/"
-                                            self.type = "web"
-                                            withAnimation {
-                                                self.showWeb = true
-                                                self.showSheet = true
-                                            }
-                            
-                                        }
-                                        else {
-                                            if let url = URL(string: "https://mypathwayplanner.yrdsb.ca/") {
-                                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                                            }
-                                        }
-                                    }
-                                    Divider()
-                                }
-                                
-                                VStack (alignment: .leading) {
-                                    //Moodle
-                                    HStack {
-                                        Image(systemName: "book.fill")
-                                            .resizable()
-                                            .frame(width: 18, height: 16)
-                                            .foregroundColor(Color("IconColor"))
-                                            .padding(.trailing, 12)
-                                        
-                                        Text("Moodle")
-                                            .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("PrimaryTextColor"))
-                                        Spacer()
-                                    }
-                                    .padding(.top, get(type: "menuButton"))
-                                    .padding(.bottom, get(type: "menuButton"))
-                                    .onTapGesture {
-                                        if self.userDataVM.studentID != "demo" {
-                                            self.url = "https://moodle2.yrdsb.ca/login/index.php"
-                                            self.userDataVM.url = "https://moodle2.yrdsb.ca/login/index.php"
-                                            self.type = "web"
-                                            withAnimation {
-                                                self.showWeb = true
-                                                self.showSheet = true
-                                            }
-                                        }
-                                        else {
-                                            if let url = URL(string: "https://moodle2.yrdsb.ca/login/index.php") {
-                                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                                            }
-                                        }
-                                    }
-                                    Divider()
-                                }
-                                
-                                VStack (alignment: .leading) {
-                                    //Twitter
-                                    HStack {
-                                        Image("Twitter")
-                                            .resizable()
-                                            .frame(width: 20, height: 17)
-                                            .padding(.trailing, 10)
-                                        
-                                        Text("YRDSB Twitter")
-                                            .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("PrimaryTextColor"))
-                                        Spacer()
-                                    }
-                                    .padding(.top, get(type: "menuButton"))
-                                    .padding(.bottom, get(type: "menuButton"))
-                                    .onTapGesture {
-                                        if self.userDataVM.studentID != "demo" {
-                                            self.url = "https://twitter.com/yrdsb"
-                                            self.userDataVM.url = "https://twitter.com/yrdsb"
-                                            self.type = "web"
-                                            withAnimation {
-                                                self.showWeb = true
-                                                self.showSheet = true
-                                            }
-                                        }
-                                        else {
-                                            if let url = URL(string: "https://twitter.com/yrdsb") {
-                                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                                            }
-                                        }
-                                    }
-                                    Divider()
-                                }
-                                
-                                VStack (alignment: .leading) {
-                                    //rate
-                                    HStack {
-                                        Image(systemName: "star.fill")
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
-                                            .foregroundColor(Color("IconColor"))
-                                            .padding(.trailing, 10)
-                                        
-                                        Text("Rate This App")
-                                            .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("PrimaryTextColor"))
-                                        Spacer()
-                                    }
-                                    .padding(.top, get(type: "menuButton"))
-                                    .padding(.bottom, get(type: "menuButton"))
-                                    .onTapGesture {
-                                        if let url = URL(string: "itms-apps://itunes.apple.com/app/id1479482556") {
+                                    else {
+                                        if let url = URL(string: "https://ta.yrdsb.ca/live/m/index.php?error_message=0") {
                                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                                         }
                                     }
-                                    Divider()
                                 }
-                                
-                                VStack (alignment: .leading) {
-                                    //rate
-                                    HStack {
-                                        Image(systemName: "ant.fill")
-                                            .frame(width: 20, height: 20)
-                                            .padding(.trailing, 10)
-                                            .foregroundColor(Color("IconColor"))
-                                        
-                                        Text("Report A Bug")
-                                            .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("PrimaryTextColor"))
-                                        Spacer()
-                                    }
-                                    .padding(.top, get(type: "menuButton"))
-                                    .padding(.bottom, get(type: "menuButton"))
-                                    .onTapGesture {
-                                        self.type = "bugreport"
+                                Divider()
+                            }
+                            
+                            VStack (alignment: .leading) {
+                                //My blueprint
+                                HStack {
+                                    Image(systemName: "m.circle.fill")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(Color("IconColor"))
+                                        .padding(.trailing, 10)
+                                    Text("My Blueprint")
+                                        .font(.system(size: get(type: "small"), weight: .regular))
+                                        .foregroundColor(Color("PrimaryTextColor"))
+                                    Spacer()
+                                }
+                                .padding(.top, get(type: "menuButton"))
+                                .padding(.bottom, get(type: "menuButton"))
+                                .onTapGesture {
+                                    if self.userDataVM.studentID != "demo" {
+                                        self.url = "https://mypathwayplanner.yrdsb.ca/"
+                                        self.userDataVM.url = "https://mypathwayplanner.yrdsb.ca/"
+                                        self.type = "web"
                                         withAnimation {
-                                            self.showBug = true
+                                            self.showWeb = true
                                             self.showSheet = true
                                         }
                                         
                                     }
-                                    Divider()
-                                }
-                                
-                                VStack (alignment: .leading) {
-                                    //rate
-                                    HStack {
-                                        Image(systemName: "escape")
-                                            .font(.system(size:  18, weight: .bold))
-                                            .padding(.trailing, 12)
-                                            .foregroundColor(Color("IconColor"))
-                                        
-                                        Text("Log Out")
-                                            .font(.system(size: get(type: "small"), weight: .regular))
-                                            .foregroundColor(Color("PrimaryTextColor"))
-                                        Spacer()
+                                    else {
+                                        if let url = URL(string: "https://mypathwayplanner.yrdsb.ca/") {
+                                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                        }
                                     }
-                                    .padding(.top, get(type: "menuButton"))
-                                    .padding(.bottom, get(type: "menuButton"))
-                                    .onTapGesture {
+                                }
+                                Divider()
+                            }
+                            
+                            VStack (alignment: .leading) {
+                                //Moodle
+                                HStack {
+                                    Image(systemName: "book.fill")
+                                        .resizable()
+                                        .frame(width: 18, height: 16)
+                                        .foregroundColor(Color("IconColor"))
+                                        .padding(.trailing, 12)
+                                    
+                                    Text("Moodle")
+                                        .font(.system(size: get(type: "small"), weight: .regular))
+                                        .foregroundColor(Color("PrimaryTextColor"))
+                                    Spacer()
+                                }
+                                .padding(.top, get(type: "menuButton"))
+                                .padding(.bottom, get(type: "menuButton"))
+                                .onTapGesture {
+                                    if self.userDataVM.studentID != "demo" {
+                                        self.url = "https://moodle2.yrdsb.ca/login/index.php"
+                                        self.userDataVM.url = "https://moodle2.yrdsb.ca/login/index.php"
+                                        self.type = "web"
                                         withAnimation {
-                                            self.userDataVM.logOut()
+                                            self.showWeb = true
+                                            self.showSheet = true
+                                        }
+                                    }
+                                    else {
+                                        if let url = URL(string: "https://moodle2.yrdsb.ca/login/index.php") {
+                                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
                                         }
                                     }
                                 }
-                                
-                                if #available(iOS 14.0, *) {
-                                    VStack {
-                                    }
-                                    .fullScreenCover(isPresented: self.$showWeb){
-                                        WebsiteView(url: self.url, show: self.$showWeb).environmentObject(self.userDataVM)
-                                            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                                    }
-                                    VStack {
-                                    }
-                                    .fullScreenCover(isPresented: self.$showBug){
-                                        BugReportView(showBugReport: self.$showBug).environmentObject(self.userDataVM)
-                                            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                                    }
-                                } else {
-                                    VStack {
-                                    }
-                                    .sheet(isPresented: self.$showSheet) {
-                                        if self.type == "web" {
-                                            WebsiteView(url: self.url, show: self.$showSheet).environmentObject(self.userDataVM)
+                                Divider()
+                            }
+                            
+                            VStack (alignment: .leading) {
+                                //Twitter
+                                HStack {
+                                    Image("Twitter")
+                                        .resizable()
+                                        .frame(width: 20, height: 17)
+                                        .padding(.trailing, 10)
+                                    
+                                    Text("YRDSB Twitter")
+                                        .font(.system(size: get(type: "small"), weight: .regular))
+                                        .foregroundColor(Color("PrimaryTextColor"))
+                                    Spacer()
+                                }
+                                .padding(.top, get(type: "menuButton"))
+                                .padding(.bottom, get(type: "menuButton"))
+                                .onTapGesture {
+                                    if self.userDataVM.studentID != "demo" {
+                                        self.url = "https://twitter.com/yrdsb"
+                                        self.userDataVM.url = "https://twitter.com/yrdsb"
+                                        self.type = "web"
+                                        withAnimation {
+                                            self.showWeb = true
+                                            self.showSheet = true
                                         }
-                                        else if self.type == "bugreport" {
-                                            BugReportView(showBugReport: self.$showSheet).environmentObject(self.userDataVM)
+                                    }
+                                    else {
+                                        if let url = URL(string: "https://twitter.com/yrdsb") {
+                                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
                                         }
+                                    }
+                                }
+                                Divider()
+                            }
+                            
+                            VStack (alignment: .leading) {
+                                //rate
+                                HStack {
+                                    Image(systemName: "star.fill")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(Color("IconColor"))
+                                        .padding(.trailing, 10)
+                                    
+                                    Text("Rate This App")
+                                        .font(.system(size: get(type: "small"), weight: .regular))
+                                        .foregroundColor(Color("PrimaryTextColor"))
+                                    Spacer()
+                                }
+                                .padding(.top, get(type: "menuButton"))
+                                .padding(.bottom, get(type: "menuButton"))
+                                .onTapGesture {
+                                    if let url = URL(string: "itms-apps://itunes.apple.com/app/id1479482556") {
+                                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                    }
+                                }
+                                Divider()
+                            }
+                            
+                            VStack (alignment: .leading) {
+                                //rate
+                                HStack {
+                                    Image(systemName: "ant.fill")
+                                        .frame(width: 20, height: 20)
+                                        .padding(.trailing, 10)
+                                        .foregroundColor(Color("IconColor"))
+                                    
+                                    Text("Report A Bug")
+                                        .font(.system(size: get(type: "small"), weight: .regular))
+                                        .foregroundColor(Color("PrimaryTextColor"))
+                                    Spacer()
+                                }
+                                .padding(.top, get(type: "menuButton"))
+                                .padding(.bottom, get(type: "menuButton"))
+                                .onTapGesture {
+                                    self.type = "bugreport"
+                                    withAnimation {
+                                        self.showBug = true
+                                        self.showSheet = true
+                                    }
+                                    
+                                }
+                                Divider()
+                            }
+                            
+                            VStack (alignment: .leading) {
+                                //rate
+                                HStack {
+                                    Image(systemName: "escape")
+                                        .font(.system(size:  18, weight: .bold))
+                                        .padding(.trailing, 12)
+                                        .foregroundColor(Color("IconColor"))
+                                    
+                                    Text("Log Out")
+                                        .font(.system(size: get(type: "small"), weight: .regular))
+                                        .foregroundColor(Color("PrimaryTextColor"))
+                                    Spacer()
+                                }
+                                .padding(.top, get(type: "menuButton"))
+                                .padding(.bottom, get(type: "menuButton"))
+                                .onTapGesture {
+                                    withAnimation {
+                                        self.userDataVM.logOut()
                                     }
                                 }
                             }
                             
-                            
-                            
-                            Spacer()
-                            
-                            Text("Version " + self.version)
-                                .font(.system(size: 9, weight: .regular))
-                                .foregroundColor(Color("PrimaryTextColor"))
-                            Text("© 2021 York Wei")
-                                .font(.system(size: 9, weight: .regular))
-                                .foregroundColor(Color("PrimaryTextColor"))
-                            
+                            if #available(iOS 14.0, *) {
+                                VStack {
+                                }
+                                .fullScreenCover(isPresented: self.$showWeb){
+                                    WebsiteView(url: self.url, show: self.$showWeb).environmentObject(self.userDataVM)
+                                        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                                }
+                                VStack {
+                                }
+                                .fullScreenCover(isPresented: self.$showBug){
+                                    BugReportView(showBugReport: self.$showBug).environmentObject(self.userDataVM)
+                                        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                                }
+                            } else {
+                                VStack {
+                                }
+                                .sheet(isPresented: self.$showSheet) {
+                                    if self.type == "web" {
+                                        WebsiteView(url: self.url, show: self.$showSheet).environmentObject(self.userDataVM)
+                                    }
+                                    else if self.type == "bugreport" {
+                                        BugReportView(showBugReport: self.$showSheet).environmentObject(self.userDataVM)
+                                    }
+                                }
+                            }
                         }
-                        .padding(.leading, 30)
-                        .padding(.trailing, 30)
-                        .padding(.top, get(type: "menuTopBottom"))
-                        .padding(.bottom, get(type: "menuTopBottom"))
-                        .frame(width: UIScreen.main.bounds.width / 1.5)
-                        .background(Color("CellColor"))
-                        .cornerRadius(30, corners: [.topRight, .bottomRight])
-                        .shadow(color: Color("DropShadowColor"), radius: 10, x: 0, y: 2)
-                        .gesture(drag)
+                        
+                        
+                        
                         Spacer()
+                        
+                        Text("Version " + self.version)
+                            .font(.system(size: 9, weight: .regular))
+                            .foregroundColor(Color("PrimaryTextColor"))
+                        Text("© 2021 York Wei")
+                            .font(.system(size: 9, weight: .regular))
+                            .foregroundColor(Color("PrimaryTextColor"))
+                        
                     }
-                    
+                    .padding(.leading, 30)
+                    .padding(.trailing, 30)
+                    .padding(.top, get(type: "menuTopBottom"))
+                    .padding(.bottom, get(type: "menuTopBottom"))
+                    .frame(width: UIScreen.main.bounds.width / 1.5)
+                    .background(Color("CellColor"))
+                    .cornerRadius(30, corners: [.topRight, .bottomRight])
+                    .shadow(color: Color("DropShadowColor"), radius: 10, x: 0, y: 2)
+                    .gesture(drag)
+                    Spacer()
                 }
-                .offset(x: self.menu ? 0 : -UIScreen.main.bounds.width)
                 
             }
+            .offset(x: self.menu ? 0 : -UIScreen.main.bounds.width)
+            
+            if self.opened {
+                CourseView(opened: self.$opened, courseIndex: self.index).environmentObject(self.userDataVM)
+                    .transition(.move(edge: .trailing))
+                    .zIndex(1)
+            }
+                
         }
         .alert(isPresented: self.$userDataVM.loadFailed) {
             Alert(title: Text("Connection Error"), message: Text("Unable to reach TeachAssist. Your marks could not be updated."), dismissButton: .default(Text("OK")))
