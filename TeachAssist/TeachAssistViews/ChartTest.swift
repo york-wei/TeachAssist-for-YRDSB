@@ -11,7 +11,7 @@ import SwiftUI
 
 struct ChartTest: View {
     var body: some View {
-        LineView(data: [90, 80, 75, 95, 80, 87.5, 100], title: "Line chart", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.purple, gradientColor: GradientColor(start: Color.purple, end: Color.pink), textColor: Color.black, legendTextColor: Color.black, dropShadowColor: Color.gray), valueSpecifier: "%.1f%%")
+        LineView(data: [90, 80, 75, 95, 80, 87.5, 100, 97.3, 89, 94.4, 91.3, 94.4, 89], title: "Line chart", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.purple, gradientColor: GradientColor(start: Color.purple, end: Color.pink), textColor: Color.black, legendTextColor: Color.black, dropShadowColor: Color.gray), valueSpecifier: "%.1f%%")
             .padding(30)
     }
 }
