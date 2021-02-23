@@ -96,6 +96,7 @@ struct CourseCellView: View {
         }
         .onTapGesture {
             if self.course.parsedAverage != -1 {
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                 self.index = self.userDataVM.courses.firstIndex(of: self.course)!
                 //print(self.index)
                 withAnimation {

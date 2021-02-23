@@ -199,6 +199,7 @@ struct CourseView: View {
                 }
                 .background(Color("BackgroundColor"))
         }
+        .navigationBarTitle(self.userDataVM.courses[courseIndex].code)
     }
 
 }
