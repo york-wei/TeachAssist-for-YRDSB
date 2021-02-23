@@ -106,8 +106,8 @@ struct CourseCellView: View {
         }
         .foregroundColor(Color("CellColor"))
         //.frame(height: get(type: "cell"))
-        .padding(.leading, 30)
-        .padding(.trailing, 30)
+        .padding(.leading, 25)
+        .padding(.trailing, 25)
         
     }
 }

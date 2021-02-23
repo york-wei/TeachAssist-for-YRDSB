@@ -28,8 +28,10 @@ struct TeachAssistView: View {
     @State var menu = false
     
     init() {
-        //UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().barTintColor = UIColor(named: "BackgroundColor")
+        UINavigationBar.appearance().isTranslucent = false
+        
     }
     
     var body: some View {
