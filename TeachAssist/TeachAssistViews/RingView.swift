@@ -39,11 +39,11 @@ struct RingView: View {
                         .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0))
                         .frame(width: 130, height: 130)
                         .shadow(color: Color("RingDropShadowColor"), radius: 6, x: 0, y: 3)
-                        //.animation(Animation.easeInOut(duration: 0.6).delay(0.3))
+                        .animation(Animation.easeInOut(duration: 0.6).delay(0.3))
                         .onAppear {
-                            withAnimation(Animation.easeInOut(duration: 0.6).delay(0.3)) {
+                            //withAnimation(Animation.easeInOut(duration: 0.6).delay(0.3)) {
                                 self.animate = true
-                            }
+                            //}
                         }
                     //.animation(.easeInOut)
                 }

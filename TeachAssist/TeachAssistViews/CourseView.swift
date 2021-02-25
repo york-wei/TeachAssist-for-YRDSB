@@ -34,13 +34,13 @@ struct CourseView: View {
                     AddEvaluationView(add: self.$add).environmentObject(self.userDataVM)
                         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 }
-            } else {
-                VStack {
+                } else {
+                    VStack {
+                    }
+                    .sheet(isPresented: self.$add) {
+                        AddEvaluationView(add: self.$add).environmentObject(self.userDataVM)
+                    }
                 }
-                .sheet(isPresented: self.$add) {
-                    AddEvaluationView(add: self.$add).environmentObject(self.userDataVM)
-                }
-            }
             
                     ScrollView (showsIndicators: false) {
                     
@@ -199,7 +199,7 @@ struct CourseView: View {
                 }
                 .background(Color("BackgroundColor"))
         }
-        .navigationBarTitle(self.userDataVM.courses[courseIndex].code)
+
     }
 
 }
