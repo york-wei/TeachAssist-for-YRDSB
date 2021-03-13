@@ -232,7 +232,7 @@ struct EvaluationView: View {
         }
         .foregroundColor(Color("CellColor"))
         //.frame(height: (!expanded || editing) ? get(type: "cell") : 380)
-        .animation(animate && expanded ? .easeOut(duration: 0.3) : .none)
+        .animation(.easeOut(duration: 0.3))
         .onTapGesture {
             if(!self.editing) {
                 self.expanded.toggle()

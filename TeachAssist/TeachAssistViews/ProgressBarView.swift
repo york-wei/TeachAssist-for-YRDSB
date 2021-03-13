@@ -60,7 +60,7 @@ struct ProgressBarView: View {
                     .fill(LinearGradient(gradient: Gradient(colors: [self.startColor, self.endColor]), startPoint: .leading, endPoint: .trailing))
                     .frame(width: (self.animate && self.percentage >= 0) ? CGFloat(geometryReader.size.width)*CGFloat(self.percentage) : 0, height: 3)
                     .hueRotation(.degrees(animate ? 0 : -45))
-                    .animation(self.animation ? Animation.easeInOut(duration: 0.6).delay(0.3) : .none)
+                    .animation(self.animation ? Animation.easeInOut(duration: 0.6).delay(0.3) : .easeOut(duration: 0.3))
                     .offset(x: 1, y: 1)
                 
             }
