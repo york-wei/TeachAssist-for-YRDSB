@@ -69,19 +69,32 @@ struct TeachAssistView: View {
                         //MENU BUTTON, STUDENT ID, REFRESH BUTTON
                         HStack {
                             
+//                            Button(action: {
+//                                withAnimation() {
+//                                    self.menu.toggle()
+//                                }
+//                            }) {
+//                                Image(systemName: "person.crop.circle")
+//                                    .font(.title)
+//                                    .foregroundColor(Color("PrimaryTextColor"))
+//                            }
+//                            //                                .frame(width: 44, height: 44)
+//                            //                                .background(Color("CellColor"))
+//                            //                                .clipShape(Circle())
+//                            //                                .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 2)
                             Button(action: {
                                 withAnimation() {
                                     self.menu.toggle()
                                 }
                             }) {
-                                Image(systemName: "person.crop.circle")
-                                    .font(.title)
-                                    .foregroundColor(Color("PrimaryTextColor"))
+                                Image(systemName: "line.horizontal.3")
+                                    .font(.system(size: 15, weight: .semibold))
+                                    .foregroundColor(Color("IconColor"))
                             }
-                            //                                .frame(width: 44, height: 44)
-                            //                                .background(Color("CellColor"))
-                            //                                .clipShape(Circle())
-                            //                                .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 2)
+                            .frame(width: 44, height: 44)
+                            .background(Color("CellColor"))
+                            .clipShape(Circle())
+                            .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 2)
                             
                             Spacer()
                             
@@ -91,26 +104,26 @@ struct TeachAssistView: View {
                                 .foregroundColor(Color("PrimaryTextColor"))
                             
                             Spacer()
-                            //                                Button(action: {
-                            //                                    self.userDataVM.isLoading = true
-                            //                                    self.userDataVM.load(launch: false)
-                            //                                }) {
-                            //                                    if self.userDataVM.isLoading {
-                            //                                        ActivityIndicator(isAnimating: true)
-                            //                                    }
-                            //                                    else {
-                            //                                        Image(systemName: "arrow.clockwise")
-                            //                                            .font(.system(size: 15, weight: .semibold))
-                            //                                            .foregroundColor(Color("IconColor"))
-                            //                                            .offset(x: 0, y: -2)
-                            //                                            .rotationEffect(Angle(degrees: 45))
-                            //                                    }
-                            //                                }
-                            //                                .frame(width: 44, height: 44)
-                            //                                .background(Color("CellColor"))
-                            //                                .clipShape(Circle())
-                            //                                .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 2)
-                            //                                .disabled(self.userDataVM.isLoading)
+                                                            Button(action: {
+                                                                self.userDataVM.isLoading = true
+                                                                self.userDataVM.load(launch: false)
+                                                            }) {
+                                                                if self.userDataVM.isLoading {
+                                                                    ActivityIndicator(isAnimating: true)
+                                                                }
+                                                                else {
+                                                                    Image(systemName: "arrow.clockwise")
+                                                                        .font(.system(size: 15, weight: .semibold))
+                                                                        .foregroundColor(Color("IconColor"))
+                                                                        .offset(x: 0, y: -2)
+                                                                        .rotationEffect(Angle(degrees: 45))
+                                                                }
+                                                            }
+                                                            .frame(width: 44, height: 44)
+                                                            .background(Color("CellColor"))
+                                                            .clipShape(Circle())
+                                                            .shadow(color: Color("DropShadowColor"), radius: 5, x: 0, y: 2)
+                                                            .disabled(self.userDataVM.isLoading)
                         }
                         
                         //SHOW OVERALL AVERAGE RING THERE ARE MARKS AVAILABLE

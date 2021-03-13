@@ -14,6 +14,9 @@ struct ProgressBarView: View {
     private let startColor : Color
     private let endColor : Color
     
+    @State var animate = false
+    @State var animation = true
+    
     init(percentage: Double) {
         
         if percentage <= 100 {
@@ -55,9 +58,17 @@ struct ProgressBarView: View {
                 //Progress
                 Capsule()
                     .fill(LinearGradient(gradient: Gradient(colors: [self.startColor, self.endColor]), startPoint: .leading, endPoint: .trailing))
-                    .frame(width: self.percentage >= 0 ? CGFloat(geometryReader.size.width)*CGFloat(self.percentage) : 0.0, height: 3)
+                    .frame(width: (self.animate && self.percentage >= 0) ? CGFloat(geometryReader.size.width)*CGFloat(self.percentage) : 0, height: 3)
+                    .hueRotation(.degrees(animate ? 0 : -45))
+                    .animation(self.animation ? Animation.easeInOut(duration: 0.6).delay(0.3) : .none)
                     .offset(x: 1, y: 1)
                 
+            }
+            .onAppear {
+                self.animate = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.animation = false
+                }
             }
             
             
