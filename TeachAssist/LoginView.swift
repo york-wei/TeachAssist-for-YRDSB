@@ -6,6 +6,7 @@
 //  Copyright © 2021 York Wei. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
 
 struct LoginView: View {
@@ -17,6 +18,9 @@ struct LoginView: View {
     // Animations
     @State var fadeIn = true
     @State var buttonTapped = false
+    
+    @State var selectedUsername = false
+    @State var selectedPassword = false
     
     @EnvironmentObject var userDataVM: UserDataViewModel
     
@@ -51,22 +55,33 @@ struct LoginView: View {
                     HStack {
                         
                         Image(systemName: "person.fill")
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(.clear)
+                            .overlay(Rectangle()
+                                        .foregroundColor(self.selectedUsername ? Color("IconColor") : Color("SecondaryTextColor"))
+                                        .mask(Image(systemName: "person.fill"))
+                                        )
                             .font(.system(.subheadline))
                     
-                        TextField("Student Number", text: $studentID)
+                        TextField("Student Number", text: $studentID, onEditingChanged: {_ in
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                self.selectedUsername.toggle()
+                            }
+                        }, onCommit: {})
                             .font(.footnote)
                             .multilineTextAlignment(.leading)
                             .autocapitalization(.none)
                             .keyboardType(.asciiCapable)
+                            .disableAutocorrection(true)
                             .foregroundColor(Color("PrimaryTextColor"))
                         
                     }
                     .padding(.bottom, 9)
                     
-                    Rectangle()
-                        .foregroundColor(Color("SecondaryTextColor"))
-                        .frame(height: 1)
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(self.selectedUsername ? Color("IconColor") : Color("SecondaryTextColor"))
+                            .frame(height: 1)
+                    }
                     
                 }
                 
@@ -75,19 +90,25 @@ struct LoginView: View {
                     HStack {
                         
                         Image(systemName: "lock.fill")
-                            .foregroundColor(Color("SecondaryTextColor"))
+                            .foregroundColor(.clear)
+                            .overlay(Rectangle()
+                                        .foregroundColor(self.selectedPassword ? Color("IconColor") : Color("SecondaryTextColor"))
+                                        .mask(Image(systemName: "lock.fill"))
+                                        )
                             .font(.system(.subheadline))
-                    
-                        SecureField("Password", text: $studentPW)
-                            .font(.footnote)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(Color("PrimaryTextColor"))
+                            
+                        SecureTextField(title: "Password", text: $studentPW, onEditingChanged: {_ in
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                self.selectedPassword.toggle()
+                            }
+                        })
+                        .frame(height: 20)
                         
                     }
                     .padding(.bottom, 9)
                     
                     Rectangle()
-                        .foregroundColor(Color("SecondaryTextColor"))
+                        .foregroundColor(selectedPassword ? Color("IconColor") : Color("SecondaryTextColor"))
                         .frame(height: 1)
                     
                 }
@@ -162,6 +183,59 @@ struct LoginView: View {
         .opacity(fadeIn ? 0 : 1)
         .offset(x: 0, y: fadeIn ? 50 : 0)
         
+    }
+    
+}
+
+struct SecureTextField: UIViewRepresentable {
+    var title: String
+    @Binding var text: String
+    var onEditingChanged: (Bool) -> Void
+    
+    func makeUIView(context: Context) -> UITextField {
+        let view = UITextField()
+        view.placeholder = title
+        view.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote)
+        view.textColor = UIColor(named: "PrimaryTextColor")
+        view.delegate = context.coordinator
+        view.isSecureTextEntry = true
+        view.endEditing(true)
+        view.keyboardType = UIKeyboardType.asciiCapable
+        return view
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(p: self)
+    }
+    
+    func updateUIView(_ uiView: UITextField, context: Context) {
+        DispatchQueue.main.async {
+            uiView.text = text
+        }
+    }
+    
+    class Coordinator: NSObject, UITextFieldDelegate {
+        
+        var parent: SecureTextField
+        
+        init(p: SecureTextField) {
+            self.parent = p
+        }
+        
+        func textFieldDidBeginEditing(_ textField: UITextField) {
+            parent.onEditingChanged(true)
+        }
+        
+        func textFieldDidEndEditing(_ textField: UITextField) {
+            parent.onEditingChanged(false)
+            if let text = textField.text {
+                self.parent.text = text
+            }
+        }
+        
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+        }
     }
     
 }

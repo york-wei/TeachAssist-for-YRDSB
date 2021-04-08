@@ -97,7 +97,8 @@ struct TeachAssistViewNew: View {
                     //    EmptyView()
                     //}
                 }
-                .navigationBarTitle("Courses", displayMode: .inline)
+                .navigationBarTitle("", displayMode: .inline)
+                .navigationBarHidden(true)
                 .navigationBarItems(leading: Button(action: {
                     self.menu = true
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()

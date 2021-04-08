@@ -191,8 +191,8 @@ struct CourseView: View {
                         }
                         
                     }
-                    .padding(.leading, get(type: "side"))
-                    .padding(.trailing, get(type: "side"))
+                    .padding(.leading, 30)
+                    .padding(.trailing, 30)
                     .padding(.top, get(type: "top"))
                     .animation(.none)
 
