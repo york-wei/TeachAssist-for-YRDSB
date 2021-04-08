@@ -54,17 +54,20 @@ struct LoginView: View {
                 
                     HStack {
                         
-                        Image(systemName: "person.fill")
-                            .foregroundColor(.clear)
-                            .overlay(Rectangle()
-                                        .foregroundColor(self.selectedUsername ? Color("IconColor") : Color("SecondaryTextColor"))
-                                        .mask(Image(systemName: "person.fill"))
-                                        )
-                            .font(.system(.subheadline))
+                        ZStack {
+                            Image(systemName: "person.fill")
+                                .foregroundColor(Color("SecondaryTextColor"))
+                                .font(.system(.subheadline))
+                            Image(systemName: "person.fill")
+                                .foregroundColor(Color("IconColor"))
+                                .font(.system(.subheadline))
+                                .opacity(self.selectedUsername ? 1 : 0)
+                        }
                     
                         TextField("Student Number", text: $studentID, onEditingChanged: {_ in
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 self.selectedUsername.toggle()
+                                self.userDataVM.loadFailed = false
                             }
                         }, onCommit: {})
                             .font(.footnote)
@@ -79,8 +82,12 @@ struct LoginView: View {
                     
                     ZStack {
                         Rectangle()
-                            .foregroundColor(self.selectedUsername ? Color("IconColor") : Color("SecondaryTextColor"))
+                            .foregroundColor(Color("SecondaryTextColor"))
                             .frame(height: 1)
+                        Rectangle()
+                            .foregroundColor(Color("IconColor"))
+                            .frame(height: 2)
+                            .opacity(self.selectedUsername ? 1 : 0)
                     }
                     
                 }
@@ -89,17 +96,20 @@ struct LoginView: View {
                 
                     HStack {
                         
-                        Image(systemName: "lock.fill")
-                            .foregroundColor(.clear)
-                            .overlay(Rectangle()
-                                        .foregroundColor(self.selectedPassword ? Color("IconColor") : Color("SecondaryTextColor"))
-                                        .mask(Image(systemName: "lock.fill"))
-                                        )
-                            .font(.system(.subheadline))
+                        ZStack {
+                            Image(systemName: "lock.fill")
+                                .foregroundColor(Color("SecondaryTextColor"))
+                                .font(.system(.subheadline))
+                            Image(systemName: "lock.fill")
+                                .foregroundColor(Color("IconColor"))
+                                .font(.system(.subheadline))
+                                .opacity(self.selectedPassword ? 1 : 0)
+                        }
                             
                         SecureTextField(title: "Password", text: $studentPW, onEditingChanged: {_ in
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 self.selectedPassword.toggle()
+                                self.userDataVM.loadFailed = false
                             }
                         })
                         .frame(height: 20)
@@ -107,9 +117,15 @@ struct LoginView: View {
                     }
                     .padding(.bottom, 9)
                     
-                    Rectangle()
-                        .foregroundColor(selectedPassword ? Color("IconColor") : Color("SecondaryTextColor"))
-                        .frame(height: 1)
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(Color("SecondaryTextColor"))
+                            .frame(height: 1)
+                        Rectangle()
+                            .foregroundColor(Color("IconColor"))
+                            .frame(height: 2)
+                            .opacity(self.selectedPassword ? 1 : 0)
+                    }
                     
                 }
                 .padding(.top, 50)
