@@ -17,6 +17,8 @@ target 'TeachAssist' do
   pod 'Firebase/Firestore'
   pod 'Firebase/RemoteConfig'
   pod 'SSSwiftUIGIFView'
+  pod 'Alamofire', '~> 5.4'
+  pod 'SwiftSoup'
   
   target 'TeachAssistTests' do
     inherit! :search_paths

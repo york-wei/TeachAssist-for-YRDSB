@@ -67,6 +67,9 @@ struct LoginView: View {
                         TextField("Student Number", text: $studentID, onEditingChanged: {_ in
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 self.selectedUsername.toggle()
+                                if selectedUsername {
+                                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                }
                                 self.userDataVM.loadFailed = false
                             }
                         }, onCommit: {})
@@ -109,6 +112,9 @@ struct LoginView: View {
                         SecureTextField(title: "Password", text: $studentPW, onEditingChanged: {_ in
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 self.selectedPassword.toggle()
+                                if selectedPassword {
+                                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                }
                                 self.userDataVM.loadFailed = false
                             }
                         })

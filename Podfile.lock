@@ -212,6 +212,7 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - Alamofire (5.4.3)
   - BoringSSL-GRPC (0.0.7):
     - BoringSSL-GRPC/Implementation (= 0.0.7)
     - BoringSSL-GRPC/Interface (= 0.0.7)
@@ -377,8 +378,10 @@ PODS:
   - PromisesObjC (1.2.12)
   - Siren (5.8.1)
   - SSSwiftUIGIFView (1.0.0)
+  - SwiftSoup (2.3.2)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.4)
   - Charts (= 3.4.0)
   - Firebase/Analytics
   - Firebase/Auth
@@ -390,10 +393,12 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - Siren
   - SSSwiftUIGIFView
+  - SwiftSoup
 
 SPEC REPOS:
   trunk:
     - abseil
+    - Alamofire
     - BoringSSL-GRPC
     - Charts
     - Firebase
@@ -421,9 +426,11 @@ SPEC REPOS:
     - PromisesObjC
     - Siren
     - SSSwiftUIGIFView
+    - SwiftSoup
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   Firebase: e1e089d9aac215a52442583f818ab61de3c4581b
@@ -451,7 +458,8 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Siren: de768099aff1f1c9acda4247064788a4940b4bf3
   SSSwiftUIGIFView: f109262cd0baff190b58b519c0e94f7622c428d4
+  SwiftSoup: f97bc4e988c7729d6457f9642f974c617a6e2510
 
-PODFILE CHECKSUM: f4758dee8dba64005257fefb5feb77f7e2bc1c71
+PODFILE CHECKSUM: 1ddd505342ef1132e85f17434be6fe2853d752b4
 
 COCOAPODS: 1.10.1

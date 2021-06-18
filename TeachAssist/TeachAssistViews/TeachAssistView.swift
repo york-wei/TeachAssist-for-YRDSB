@@ -41,6 +41,8 @@ struct TeachAssistView: View {
     
     @State var version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     
+    @State var currentOffsetX: CGFloat = 0
+    
     var body: some View {
         
         let drag = DragGesture()
@@ -549,8 +551,31 @@ struct TeachAssistView: View {
             .offset(x: self.menu ? 0 : -UIScreen.main.bounds.width)
             
             if self.opened {
-                CourseView(opened: self.$opened, courseIndex: self.index).environmentObject(self.userDataVM)
-                    .transition(.move(edge: .trailing))
+                ZStack (alignment: .topLeading){
+                    CourseView(opened: self.$opened, courseIndex: self.index).environmentObject(self.userDataVM)
+                    Rectangle()
+                        .frame(width: 20, height: UIScreen.main.bounds.height)
+                        .foregroundColor(Color("BackgroundColor"))
+                        .gesture(
+                            
+                            DragGesture(coordinateSpace: .global)
+                                .onChanged { value in
+                                    currentOffsetX = value.translation.width
+                                }
+                                .onEnded { value in
+                                    if currentOffsetX > UIScreen.main.bounds.width / 4 {
+                                        withAnimation(.easeIn(duration: 0.2)) {
+                                            self.opened = false
+                                        }
+                                    }
+                                    withAnimation {
+                                        currentOffsetX = 0
+                                    }
+                                }
+                        )
+                }
+                .offset(x: currentOffsetX)
+                .transition(.move(edge: .trailing))
                     .zIndex(1)
             }
                 
